@@ -23,3 +23,4 @@ public class DBcontroller {
 	    return DriverManager.getConnection(Stringutils.LOCALHOST_URL, Stringutils.LOCALHOST_USERNAME,
 	                                      Stringutils.LOCALHOST_PASSWORD);
 	}
+}
