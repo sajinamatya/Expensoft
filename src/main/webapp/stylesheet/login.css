@@ -80,7 +80,7 @@ h1 {
   border-radius: 20px;
   transition: 0.25s;
   cursor: pointer;
-  width:130px;
+  width:160px;
 }
 .login-right input[type = "submit"]:hover{
   background: #5D7986;
