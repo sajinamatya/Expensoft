@@ -14,7 +14,8 @@ String contextPath = request.getContextPath();
 <body>
 <div class= "login-main">
 
-	<div class="login-left"></div>
+	<div class="login-left"> <img alt="" src="../resources/image1.jpg">
+	</div>
 	
 	<div class ="login-right">
 		<h1> Login </h1>
