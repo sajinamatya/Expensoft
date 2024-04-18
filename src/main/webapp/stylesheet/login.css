@@ -22,7 +22,7 @@ body{
   
 }
 .login-left{
-	background-image: url(../resources/image1.jpg);
+
 	flex-grow:2;
 }
 h1 {
@@ -87,4 +87,7 @@ h1 {
 }
 .login-right {
 background-color: #759A9B;
+}
+@media screen and (max-width: 720px){
+	.login-main div{width:200px ;}
 }
