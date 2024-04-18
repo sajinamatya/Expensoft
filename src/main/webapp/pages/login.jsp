@@ -8,7 +8,7 @@ String contextPath = request.getContextPath();
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
 <link rel="stylesheet" type="text/css" href="<%=contextPath%>/stylesheet/login.css"/>
 </head>
 <body>
