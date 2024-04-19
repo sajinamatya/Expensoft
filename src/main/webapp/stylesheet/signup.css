@@ -1,0 +1,94 @@
+@charset "ISO-8859-1";
+
+
+body {
+    font-family: Monospace;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    align-items: center;
+    
+    background-color:#98a2a5;
+}
+
+
+.signup-form {
+	display:flex;
+	justify-content: space-between;
+	background-color:#759A9B ;
+	width:1000px;
+	padding:10px;
+	height: 550px;
+    margin: 100px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.signup-left{
+	width: 400px;
+	background-color:#759A9B ;
+	margin:0;
+}
+.signup-right{
+	background-image:url(../resources/44.jpg);
+	background-size:cover;
+	width:600px;
+	margin-left:5px;
+	border-radius: 10% 30% 50% 70%;s
+}
+
+
+.row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.col {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.col:last-child {
+    margin-right: 0;
+}
+
+label {
+	font-size: 17px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+input:focus,select:focus{
+	 background-color:#5995a6;
+}
+
+
+.signup-left input[type="submit"] {
+    border:0;
+  background-color: #35b0ca;
+  font-family:monospace bold;
+  display: block;
+  font-size: 16px;
+  margin: 30px 10px;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  padding: 12px 40px;
+  outline: none;
+  color: rgb(0, 0, 0);
+  border-radius: 20px;
+  transition: 0.25s;
+  cursor: pointer;
+  width:160px;
+}
+
+.signup-left input[type="submit"]:hover {
+    background-color: #5D7986;
+}
+
