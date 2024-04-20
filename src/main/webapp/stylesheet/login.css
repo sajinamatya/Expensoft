@@ -16,7 +16,7 @@ body{
  
   width: 300px;
   text-align: center;
-  line-height: 75px;
+
   font-size: 30px;
   
   
@@ -28,7 +28,7 @@ body{
 h1 {
 	font-size : 40px;
 	font-family:monospace;
-	margin-top:0px;
+	margin-top:10px;
 	font-weight : 600;
 	
 }
@@ -68,17 +68,25 @@ h1 {
 }
 
 
+.login-right a , .login-right p  {
+	margin-top:63px;
+	font-family:monospace;
+	font-size:15px;
+	text-decoration:none;
+	
+}
+
+
 .login-right input[type="submit"]{
-	border:0;
+	
   background-color: #35b0ca;
   font-family:monospace bold;
   display: block;
   font-size: 16px;
-  margin: 100px auto;
+  margin: 60px 0px 0px 70px ;
   text-align: center;
   border: 2px solid rgb(0, 0, 0);
   padding: 12px 40px;
-  outline: none;
   color: rgb(0, 0, 0);
   border-radius: 20px;
   transition: 0.25s;

@@ -54,17 +54,20 @@
 						id="Address" name="Address" required>
 				</div>
 				<div class="col">
-					<label for="password">Password:</label> <input type="password"
-						id="password" name="password" required>
+					<label for="password">What's your favorite item? </label> <input type="text"
+						id="security" name="security" required>
 				</div>
 			</div>
 			<div class="row">
+			<div class="col">
+					<label for="password">Password:</label> <input type="password"
+						id="password" name="password" required>
+				</div>
 				<div class="col">
-					<label for="retypePassword">Retype Password:</label> <input
+					<label for="Retype Password"> Retype Password:</label> <input
 						type="password" id="retypePassword" name="retypePassword" required>
 				</div>
-				<div class="col">
-				</div>
+				
 			</div>
 			<input type="submit" name="" value="Sign up"> <h2><a href ="<%=contextPath%>/pages/login.jsp">login</a></h2>
 		</form>

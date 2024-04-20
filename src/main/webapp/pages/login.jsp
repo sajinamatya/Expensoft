@@ -21,13 +21,15 @@ String contextPath = request.getContextPath();
 		<h1> Login </h1>
 		<form action="sajin.html" method="POST" onsubmit="return validate()" >
 			
-			<input type="text" id="name"placeholder ="Username">
+			<input type="text" id="name"placeholder ="Username" required>
 	
-			<input type="password" id="password" placeholder="Password">
+			<input type="password" id="password" placeholder="Password" required>
+			
 			<input type="submit" name="" value="Login">
-		
+			<p>Don't have an account? <a href="<%=contextPath%>/pages/signup.jsp">Signup</a><p>
 
 		</form>
+		
 	</div>
 
 </div>
