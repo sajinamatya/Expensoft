@@ -4,18 +4,20 @@ public class Stringutils {
 
 	// Start: Database Connection
 		public static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-		public static final String LOCALHOST_URL = "jdbc:mysql://localhost:3306/student_management";
+		public static final String LOCALHOST_URL = "jdbc:mysql://localhost:3306/expensoft";
 		public static final String LOCALHOST_USERNAME = "root";
 		public static final String LOCALHOST_PASSWORD = "";
 		// End: Database Connection
 
 		// Start: SQl Queries
 		public static final String QUERY_SIGNUP_USER = "INSERT INTO user ("
-				+ "full_name, email, date_of_birth, gender,phone_number, address, user_name, password) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "full_name, email, date_of_birth, gender,phone_number, address, user_name, password,security_question) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
 
 		public static final String QUERY_LOGIN_USER_CHECK = "SELECT * FROM student_info WHERE user_name = ?";
 		public static final String QUERY_GET_ALL_STUDENTS = "SELECT * FROM student_info";
+		public static final String QUERY_CHECK_EMAIL = " SELECT email FROM users WHERE email = ?";
+		public static final String QUERY_CHECK_USERNAME = "SELECT user_name FROM users WHERE user_name = ?";
 		// End: SQl Queries
 
 		// Start: Parameter names
@@ -56,13 +58,9 @@ public class Stringutils {
 		// End: Validation Messages
 
 		// Start: JSP Route path 
-		public static final String PAGE_URL_LOGIN = "/page/login.jsp";
-		public static final String PAGE_URL_SIGNUP = "/page/signup.jsp";
-		public static final String PAGE_URL_WELCOME = "/page/welcome.jsp";
-		public static final String PAGE_URL_FOOTER = "page/footer.jsp";
-		public static final String PAGE_URL_HEADER = "page/header.jsp";
-		public static final String URL_LOGIN = "/login.jsp";
-		public static final String URL_INDEX = "/index.jsp";
+		public static final String PAGE_URL_LOGIN = "/pages/login.jsp";
+		public static final String PAGE_URL_SIGNUP = "/pages/signup.jsp";
+		public static final String PAGE_URL_USER_HOME = "/pages/userhome.jsp";
 		// End: JSP Route
 
 		// Start: Servlet Route Path

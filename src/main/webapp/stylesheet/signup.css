@@ -33,7 +33,7 @@ body {
 	background-size:cover;
 	width:600px;
 	margin-left:5px;
-	border-radius: 10% 30% 50% 70%;s
+	border-radius: 10% 30% 50% 70%;
 }
 
 
@@ -91,4 +91,10 @@ input:focus,select:focus{
 .signup-left input[type="submit"]:hover {
     background-color: #5D7986;
 }
+.error-msg{
+	color: red;
+}
 
+.success-msg{
+	color: #449A44;
+}

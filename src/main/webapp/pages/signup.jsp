@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%String contextPath = request.getContextPath();%>
+    <%@page import="utils.Stringutils"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 <div class="signup-form">
 <div class = 'signup-left'> 
 		<h1>Signup</h1>
-		<form action="" method="post">
+		<form action="<%=contextPath%>/signup" method="post">
 			<div class="row">
 				<div class="col">
 					<label for="fullName">Full Name :</label> <input type="text"
@@ -27,11 +28,11 @@
 			<div class="row">
 				<div class="col">
 					<label for="username">Username:</label> <input type="text"
-						id="username" name="username" required>
+						id="username" name="userName" required>
 				</div>
 				<div class="col">
-					<label for="dateofbirth">Date of Birth:</label> <input type="date"
-						id="dateofbirth" name="dateofbirth" required>
+					<label for="dateOfbirth">Date of Birth:</label> <input type="date"
+						id="dateOfBirth" name="dateOfBirth" required>
 				</div>
 
 			</div>
@@ -50,12 +51,12 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<label for="Address">Address</label> <input type="text"
-						id="Address" name="Address" required>
+					<label for="address">Address</label> <input type="text"
+						id="address" name="address" required>
 				</div>
 				<div class="col">
-					<label for="password">What's your favorite item? </label> <input type="text"
-						id="security" name="security" required>
+					<label for="securityQn">What's your favorite item? </label> <input type="text"
+						id="securityQn" name="securityQn" required>
 				</div>
 			</div>
 			<div class="row">
@@ -71,6 +72,33 @@
 			</div>
 			<input type="submit" name="" value="Sign up"> <h2><a href ="<%=contextPath%>/pages/login.jsp">login</a></h2>
 		</form>
+<%
+		String errMsg = (String) request.getAttribute(Stringutils.MESSAGE_ERROR);
+		String successMsg = (String) request.getAttribute(Stringutils.MESSAGE_SUCCESS);
+
+		if (errMsg != null) {
+			// print
+		%>
+		<h4 class="error-msg">
+			<%
+			out.println(errMsg);
+			%>
+		</h4>
+		<%
+		}
+
+		if (successMsg != null) {
+		// print
+		%>
+		<h4 class="success-msg">
+			<%
+			out.println(successMsg);
+			%>
+		</h4>
+		<%
+		}
+		%>
+		
 		
 	</div>
 	<div class='signup-right'></div>
