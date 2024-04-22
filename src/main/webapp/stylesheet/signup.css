@@ -16,9 +16,9 @@ body {
 	display:flex;
 	justify-content: space-between;
 	background-color:#759A9B ;
-	width:1000px;
+	width:1100px;
 	padding:10px;
-	height: 550px;
+	height: 650px;
     margin: 100px auto;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -33,7 +33,7 @@ body {
 	background-size:cover;
 	width:600px;
 	margin-left:5px;
-	border-radius: 10% 30% 50% 70%;
+	border-radius: 10% ;
 }
 
 
@@ -75,7 +75,7 @@ input:focus,select:focus{
   background-color: #35b0ca;
   font-family:monospace bold;
   display: block;
-  font-size: 16px;
+  font-size: 17px;
   margin: 30px 10px;
   text-align: center;
   border: 2px solid rgb(0, 0, 0);

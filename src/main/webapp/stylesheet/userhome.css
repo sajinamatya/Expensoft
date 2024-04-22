@@ -1,0 +1,65 @@
+@charset "ISO-8859-1";
+body{
+	background-color:#98a2a5;
+	font-family: monospace;
+}
+
+.main{
+	display:flex;
+	width:1200px;
+	height : 700px;
+	margin: 50px auto;
+	justify-content:space-between;
+}
+.expense, .income {
+	border-radius: 50px;
+	width: 600px;
+	height : 700px;
+	background-color:#759A9B;
+}
+.income{
+	margin-left:30px;
+}
+.main h1{
+	margin:0px 0px 0px 80px;
+}
+.main input,select,textarea {
+	font-weight: 600;
+	font-size: 15px;
+	font-family: monospace;
+	margin:0px 0px 0px 80px;
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+input:focus,select:focus{
+	 background-color:#5995a6;
+}
+label{
+	font-weight: 600;
+	font-size: 20px;
+	font-family: monospace;
+	margin:0px 0px 0px 80px;
+}
+.main input[type="submit"]{
+	
+  background-color: #35b0ca;
+  font-family:monospace bold;
+  display: block;
+  
+  font-size: 20px;
+  margin: 40px 0px 0px 70px ;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  padding: 12px 40px;
+  color: rgb(0, 0, 0);
+  border-radius: 50px;
+  transition: 0.25s;
+  cursor: pointer;
+  width:60%;
+}
+.main input[type = "submit"]:hover{
+  background: #5D7986;
+}

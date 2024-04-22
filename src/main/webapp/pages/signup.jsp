@@ -14,6 +14,7 @@
 <div class="signup-form">
 <div class = 'signup-left'> 
 		<h1>Signup</h1>
+		<h2> Track your expense and income</h2>
 		<form action="<%=contextPath%>/signup" method="post">
 			<div class="row">
 				<div class="col">
@@ -55,7 +56,7 @@
 						id="address" name="address" required>
 				</div>
 				<div class="col">
-					<label for="securityQn">What's your favorite item? </label> <input type="text"
+					<label for="securityQn"> Favorite item?  </label> <input type="text"
 						id="securityQn" name="securityQn" required>
 				</div>
 			</div>
@@ -70,7 +71,8 @@
 				</div>
 				
 			</div>
-			<input type="submit" name="" value="Sign up"> <h2><a href ="<%=contextPath%>/pages/login.jsp">login</a></h2>
+			<input type="submit" name="" value="Sign up"> 
+			<h2>Already have an account?<a href ="<%=contextPath%>/pages/login.jsp" style="text-decoration:None"> login</a></h2>
 		</form>
 <%
 		String errMsg = (String) request.getAttribute(Stringutils.MESSAGE_ERROR);

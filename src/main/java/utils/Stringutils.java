@@ -14,8 +14,8 @@ public class Stringutils {
 				+ "full_name, email, date_of_birth, gender,phone_number, address, user_name, password,security_question) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
 
-		public static final String QUERY_LOGIN_USER_CHECK = "SELECT * FROM student_info WHERE user_name = ?";
-		public static final String QUERY_GET_ALL_STUDENTS = "SELECT * FROM student_info";
+		public static final String QUERY_LOGIN_USER_CHECK = "SELECT * FROM user WHERE user_name = ?";
+		public static final String QUERY_GET_ALL_USER = "SELECT * FROM user";
 		public static final String QUERY_CHECK_EMAIL = " SELECT email FROM users WHERE email = ?";
 		public static final String QUERY_CHECK_USERNAME = "SELECT user_name FROM users WHERE user_name = ?";
 		// End: SQl Queries
@@ -31,6 +31,7 @@ public class Stringutils {
 		public static final String PHONE_NUMBER = "phoneNumber";
 		public static final String PASSWORD = "password";
 		public static final String RETYPE_PASSWORD = "retypePassword";
+		public static final String USER_NAME = "user_name";
 		// End: Parameter names
 
 		// Start: Validation Messages
@@ -61,6 +62,7 @@ public class Stringutils {
 		public static final String PAGE_URL_LOGIN = "/pages/login.jsp";
 		public static final String PAGE_URL_SIGNUP = "/pages/signup.jsp";
 		public static final String PAGE_URL_USER_HOME = "/pages/userhome.jsp";
+		public static final String PAGE_URL_HEADER = "/pages/header.jsp" ;
 		// End: JSP Route
 
 		// Start: Servlet Route Path

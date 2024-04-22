@@ -1,74 +1,87 @@
 package controller.servlets;
 
 import java.io.IOException;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import controller.database.DatabaseController;
+import model.LoginModel;
 import utils.Stringutils;
 
 /**
- * Servlet implementation class Login
+ * This Servlet class handles login requests for a student management system.
+ * It retrieves username and password from the login form submission,
+ * validates them against a database using a `DBController`, and redirects the user
+ * accordingly based on the login result.
+ *
+ * @author [Prithivi Maharjan, prithivi.maharjan18@gmail.com]
  */
+
 @WebServlet(urlPatterns = Stringutils.SERVLET_URL_LOGIN, asyncSupported = true)
 public class Login extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
+    private static final long serialVersionUID = 1L;
+    private final DatabaseController DatabaseController;
+
     public Login() {
-    	 
-        // TODO Auto-generated constructor stub
+        this.DatabaseController = new DatabaseController();
     }
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-	}
+    /**
+     * Handles HTTP POST requests for login.
+     *
+     * @param request The HttpServletRequest object containing login form data.
+     * @param response The HttpServletResponse object for sending responses.
+     * @throws ServletException if a servlet-specific error occurs.
+     * @throws IOException if an I/O error occurs.
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-	/**
-	 * @see Servlet#destroy()
-	 */
-	
+        // Extract username and password from the request parameters
+        String userName = request.getParameter(Stringutils.USERNAME);
+        String password = request.getParameter(Stringutils.PASSWORD);
 
-	/**
-	 * @see Servlet#getServletConfig()
-	 */
-	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+        // Create a LoginModel object to hold user credentials
+        LoginModel loginModel = new LoginModel(userName, password);
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        // Call DBController to validate login credentials
+        int loginResult = DatabaseController.getUserLoginInfo(loginModel);
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
+        // Handle login results with appropriate messages and redirects
+        if (loginResult == 1) {
+            // Login successful
+        	HttpSession userSession = request.getSession();
+			userSession.setAttribute(Stringutils.USERNAME, userName);
+			userSession.setMaxInactiveInterval(30*60);
+			
+			Cookie userCookie= new Cookie(Stringutils.USER, userName);
+			userCookie.setMaxAge(30*60);
+			response.addCookie(userCookie);
+			
+            request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_LOGIN);
+			response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_USER_HOME);
+        } else if (loginResult == 0) {
+            // Username or password mismatch
+            request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_LOGIN);
+			request.setAttribute(Stringutils.USERNAME, userName);
+            request.getRequestDispatcher(Stringutils.PAGE_URL_LOGIN).forward(request, response);
+        } else if (loginResult == -1) {
+            // Username not found
+            request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_CREATE_ACCOUNT);
+			request.setAttribute(Stringutils.USERNAME, userName);
+            request.getRequestDispatcher(Stringutils.PAGE_URL_LOGIN).forward(request, response);
+        } else {
+            // Internal server error
+            request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_SERVER);
+			request.setAttribute(Stringutils.USERNAME, userName);
+            request.getRequestDispatcher(Stringutils.PAGE_URL_LOGIN).forward(request, response);
+        }
+    }
 }
+

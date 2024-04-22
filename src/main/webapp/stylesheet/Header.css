@@ -1,0 +1,107 @@
+@charset "ISO-8859-1";
+
+
+
+body {
+	margin:0;
+	font-family: monospace;
+	line-height: 3;
+	margin: 0;
+	min-height: 100vh;
+	font-size: 15px;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+h2, h3, a {
+	color: #34495e;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+
+
+.main-nav {
+	margin-top: 5px;
+}
+
+ .main-nav  li a {
+	padding: 5px 20px;
+	text-transform: uppercase;
+	text-align: right;	
+	display: block;
+	
+	
+}
+.main-nav li {
+	margin-left:250px;
+}
+ .main-nav .profile{
+	
+	
+}
+
+.main-nav a,.main-nav li button {
+	color: #34495e;
+	font-size: .99em;
+}
+
+
+.main-nav input[type="submit"]{
+background-color: #0080ff;
+  font-family:monospace bold;
+  font-size: 20px;
+  text-align: center;
+  border: 2px solid #0080ff;
+  padding: 10px 10px;
+  color: rgb(0, 0, 0);
+  border-radius:1px;
+  transition: 0.25s;
+  cursor: pointer;
+  width:130px;
+}
+.main-nav input[type = "submit"]:hover{
+  background: #5D7986;
+}
+
+.header {
+	margin:0;
+	padding-top: .5em;
+	padding-bottom: .5em;
+	border: 1px solid #0080c0;
+	background-color: #0080c0;
+	
+	box-shadow: 0px 0px 14px 0px rgb(64, 128, 128);
+	
+	}
+
+/* ================================= 
+  Media Queries
+==================================== */
+@media (min-width: 769px) {
+    .header, .main-nav {
+        display: flex;
+    }
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .header {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media ( min-width : 1025px) {
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}

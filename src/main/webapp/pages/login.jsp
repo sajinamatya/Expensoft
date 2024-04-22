@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <%
 String contextPath = request.getContextPath();
+%>
+<%@page import="utils.Stringutils"%>
+<%
+
+String errMsg = (String) request.getAttribute(Stringutils.MESSAGE_ERROR);
+String successMsg = (String) request.getAttribute(Stringutils.MESSAGE_SUCCESS);
+String username = (String) request.getAttribute(Stringutils.USERNAME);
+String successParam = request.getParameter(Stringutils.SUCCESS);
 %>
 
 <!DOCTYPE html>
@@ -14,16 +23,16 @@ String contextPath = request.getContextPath();
 <body>
 <div class= "login-main">
 
-	<div class="login-left"> <img alt="" src="../resources/image1.jpg">
+	<div class="login-left"> <img alt="" src="<%=contextPath%>/resources/image1.jpg" width=600 height=500>
 	</div>
 	
 	<div class ="login-right">
 		<h1> Login </h1>
-		<form action="sajin.html" method="POST" onsubmit="return validate()" >
+		<form action="<%= contextPath%>/login" method="POST"  >
 			
-			<input type="text" id="name"placeholder ="Username" required>
+			<input type="text" id="name" name = 'userName' placeholder ="Username" required>
 	
-			<input type="password" id="password" placeholder="Password" required>
+			<input type="password" id="password" name ='password' placeholder="Password" required>
 			
 			<input type="submit" name="" value="Login">
 			<p>Don't have an account? <a href="<%=contextPath%>/pages/signup.jsp">Signup</a><p>
