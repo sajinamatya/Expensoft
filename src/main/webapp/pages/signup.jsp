@@ -72,7 +72,7 @@
 				
 			</div>
 			<input type="submit" name="" value="Sign up"> 
-			<h2>Already have an account?<a href ="<%=contextPath%>/pages/login.jsp" style="text-decoration:None"> login</a></h2>
+			<h2>Already have an account?<a href ="<%=contextPath%>/pages/login.jsp" style="text-decoration:None;"> login</a></h2>
 		</form>
 <%
 		String errMsg = (String) request.getAttribute(Stringutils.MESSAGE_ERROR);
