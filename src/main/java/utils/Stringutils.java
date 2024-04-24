@@ -16,8 +16,9 @@ public class Stringutils {
 
 		public static final String QUERY_LOGIN_USER_CHECK = "SELECT * FROM user WHERE user_name = ?";
 		public static final String QUERY_GET_ALL_USER = "SELECT * FROM user";
-		public static final String QUERY_CHECK_EMAIL = " SELECT email FROM users WHERE email = ?";
-		public static final String QUERY_CHECK_USERNAME = "SELECT user_name FROM users WHERE user_name = ?";
+		public static final String QUERY_CHECK_EMAIL = " SELECT email FROM user WHERE email = ?";
+		public static final String QUERY_CHECK_PHONENUMBER = " SELECT phone_number FROM user WHERE phone_number = ?";
+		public static final String QUERY_CHECK_USERNAME = "SELECT user_name FROM user WHERE user_name = ?";
 		// End: SQl Queries
 
 		// Start: Parameter names
@@ -43,6 +44,7 @@ public class Stringutils {
 		public static final String MESSAGE_ERROR_PHONE_NUMBER = "Phone number is already registered.";
 		public static final String MESSAGE_ERROR_PASSWORD_UNMATCHED = "Password is not matched.";
 		public static final String MESSAGE_ERROR_INCORRECT_DATA = "Please correct all the fields.";
+	
 
 		// Login Page Messages
 		public static final String MESSAGE_SUCCESS_LOGIN = "Successfully LoggedIn!";
@@ -63,6 +65,7 @@ public class Stringutils {
 		public static final String PAGE_URL_SIGNUP = "/pages/signup.jsp";
 		public static final String PAGE_URL_USER_HOME = "/pages/userhome.jsp";
 		public static final String PAGE_URL_HEADER = "/pages/header.jsp" ;
+		public static final String PAGE_URL_ADMIN = "/pages/admindashboard.jsp" ;
 		// End: JSP Route
 
 		// Start: Servlet Route Path
