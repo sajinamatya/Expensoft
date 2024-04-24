@@ -69,7 +69,7 @@ h1 {
 
 
 .login-right a , .login-right p  {
-	margin-top:63px;
+	margin-top:53px;
 	font-family:monospace;
 	font-size:18px;
 	text-decoration:none;
@@ -98,6 +98,14 @@ h1 {
 }
 .login-right {
 background-color: #759A9B;
+
+
+}
+.error,.sucess{
+	margin-top:40px;
+	font-size: 16px;
+	color:#BD3139;
+	
 }
 @media screen and (max-width: 720px){
 	.login-main div{width:200px ;}

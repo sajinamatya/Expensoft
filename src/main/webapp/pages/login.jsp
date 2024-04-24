@@ -36,7 +36,29 @@ String successParam = request.getParameter(Stringutils.SUCCESS);
 			
 			<input type="submit" name="" value="Login">
 			<p>Don't have an account? <a href="<%=contextPath%>/pages/signup.jsp">Signup</a><p>
+<%
+		if (errMsg != null) {
+			// print
+		%>
+		<h6 class="error">
+			<%
+			out.println(errMsg);
+			%>
+		</h6>
+		<%
+		}
 
+		if (successMsg != null) {
+		// print
+		%>
+		<h6 class="success">
+			<%
+			out.println(successMsg);
+			%>
+		</h6>
+		<%
+		}
+		%>
 		</form>
 		
 	</div>

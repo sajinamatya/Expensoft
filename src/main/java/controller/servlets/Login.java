@@ -66,7 +66,12 @@ public class Login extends HttpServlet {
 			
             request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_LOGIN);
 			response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_USER_HOME);
-        } else if (loginResult == 0) {
+			}
+		else if(loginResult == 3 ) {
+			request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_LOGIN);
+			response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_ADMIN); 
+			}
+         else if (loginResult == 0) {
             // Username or password mismatch
             request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_LOGIN);
 			request.setAttribute(Stringutils.USERNAME, userName);
@@ -78,7 +83,7 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher(Stringutils.PAGE_URL_LOGIN).forward(request, response);
         } else {
             // Internal server error
-            request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_SERVER);
+            request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils. MESSAGE_ERROR_SERVER);
 			request.setAttribute(Stringutils.USERNAME, userName);
             request.getRequestDispatcher(Stringutils.PAGE_URL_LOGIN).forward(request, response);
         }

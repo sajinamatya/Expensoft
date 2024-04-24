@@ -50,25 +50,34 @@ public class SignUp extends HttpServlet {
 		String securityQn = request.getParameter(Stringutils.SECURITY_QUESTION);
 		String password = request.getParameter(Stringutils.PASSWORD);
 		
+		
+		if(databaseController.checkEmailIfExists(email) == true || databaseController.checkNumberIfExists(phoneNumber) == true || databaseController.checkUsernameIfExists(username)== true) {
+			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_EMAIL);
+			request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
+			
+		}
+		else {
 
-		// Creating  a Sign up model  object to hold user details
-		SignupModel user = new SignupModel(fullName,email,username,gender,phoneNumber,address,password,securityQn,dateOfBirth);
+			// Creating  a Sign up model  object to hold user details
+			SignupModel user = new SignupModel(fullName,email,username,gender,phoneNumber,address,password,securityQn,dateOfBirth);
 		
 		
 
 		// Calling DatabaseController to sign up  the user 
-		int result = databaseController.signupUser(user);
+			int result = databaseController.signupUser(user);
 
-		if (result == 1) {
-			request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_REGISTER);
-			response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_LOGIN + "?success=true");
-		} else if (result == 0) {
-			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_SIGNUP);
-			request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
-		} else {
-			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_SERVER);
-			request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
+			if (result == 1) {
+				request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_REGISTER);
+				response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_LOGIN + "?success=true");
+		} 	else if (result == 0) {
+				request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_SIGNUP);
+				request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
+		} 	else {
+				request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_SERVER);
+				request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
 		}
 	}
 
+		
+}
 }
