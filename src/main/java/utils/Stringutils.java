@@ -13,12 +13,20 @@ public class Stringutils {
 		public static final String QUERY_SIGNUP_USER = "INSERT INTO user ("
 				+ "full_name, email, date_of_birth, gender,phone_number, address, user_name, password,security_question) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
-
+		public static final String QUERY_USER_EXPENSE = "INSERT INTO expense ("
+				+ "user_id, expense_amount, expense_date,expense_category, expense_description) "
+				+ "VALUES (?, ?, ?, ?, ?)";
+		
+		public static final String QUERY_USER_INCOME = "INSERT INTO income ("
+				+ "user_id, income_amount, income_date,income_category, income_description) "
+				+ "VALUES (?, ?, ?, ?, ?)";
+		
 		public static final String QUERY_LOGIN_USER_CHECK = "SELECT * FROM user WHERE user_name = ?";
 		public static final String QUERY_GET_ALL_USER = "SELECT * FROM user";
 		public static final String QUERY_CHECK_EMAIL = " SELECT email FROM user WHERE email = ?";
 		public static final String QUERY_CHECK_PHONENUMBER = " SELECT phone_number FROM user WHERE phone_number = ?";
 		public static final String QUERY_CHECK_USERNAME = "SELECT user_name FROM user WHERE user_name = ?";
+		public static final String QUERY_GET_USER_ID = "SELECT user_id FROM user WHERE user_name = ?";
 		// End: SQl Queries
 
 		// Start: Parameter names
@@ -33,6 +41,18 @@ public class Stringutils {
 		public static final String PASSWORD = "password";
 		public static final String RETYPE_PASSWORD = "retypePassword";
 		public static final String USER_NAME = "user_name";
+		public static final String  USER_ID = "user_id";
+		
+		public static final String EXPENSE_AMOUNT = "expenseAmount";
+		public static final String EXPENSE_CATEGORY = "expenseCategory";
+		public static final String EXPENSE_DATE = "expenseDate";
+		public static final String EXPENSE_DESCRIPTION = "expenseDesc";
+		
+		public static final String INCOME_AMOUNT = "incomeAmount";
+		public static final String INCOME_CATEGORY = "incomeCategory";
+		public static final String INCOME_DATE = "incomeDate";
+		public static final String INCOME_DESCRIPTION = "incomeDesc";
+		
 		// End: Parameter names
 
 		// Start: Validation Messages
@@ -72,6 +92,8 @@ public class Stringutils {
 		public static final String SERVLET_URL_LOGIN = "/login";
 		public static final String SERVLET_URL_SIGNUP = "/signup";
 		public static final String SERVLET_URL_LOGOUT = "/logout";
+		public static final String SERVLET_URL_EXPENSE = "/expense";
+		public static final String SERVLET_URL_INCOME = "/income";
 		// End: Servlet Route Path
 
 		// Start: Normal Text

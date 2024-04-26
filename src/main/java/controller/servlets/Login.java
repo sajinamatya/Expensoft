@@ -46,17 +46,35 @@ public class Login extends HttpServlet {
         // Extract username and password from the request parameters
         String userName = request.getParameter(Stringutils.USERNAME);
         String password = request.getParameter(Stringutils.PASSWORD);
-
+        String user_id = String.valueOf(DatabaseController.extractUser_Id(userName));
         // Create a LoginModel object to hold user credentials
         LoginModel loginModel = new LoginModel(userName, password);
-
+        
         // Call DBController to validate login credentials
         int loginResult = DatabaseController.getUserLoginInfo(loginModel);
 
         // Handle login results with appropriate messages and redirects
         if (loginResult == 1) {
             // Login successful
+        	
         	HttpSession userSession = request.getSession();
+			userSession.setAttribute(Stringutils.USERNAME, userName);
+			userSession.setAttribute(Stringutils.USER_ID, user_id);
+			userSession.setMaxInactiveInterval(30*60);
+			
+			Cookie userCookie= new Cookie(Stringutils.USER, userName);
+			Cookie userCookieId = new Cookie("user_id",user_id);
+			userCookie.setMaxAge(30*60);
+			response.addCookie(userCookie);
+			response.addCookie(userCookieId);
+			
+			
+			
+            request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_LOGIN);
+			response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_USER_HOME);
+			}
+		else if(loginResult == 3 ) {
+			HttpSession userSession = request.getSession();
 			userSession.setAttribute(Stringutils.USERNAME, userName);
 			userSession.setMaxInactiveInterval(30*60);
 			
@@ -64,10 +82,6 @@ public class Login extends HttpServlet {
 			userCookie.setMaxAge(30*60);
 			response.addCookie(userCookie);
 			
-            request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_LOGIN);
-			response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_USER_HOME);
-			}
-		else if(loginResult == 3 ) {
 			request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_LOGIN);
 			response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_ADMIN); 
 			}
@@ -87,6 +101,11 @@ public class Login extends HttpServlet {
 			request.setAttribute(Stringutils.USERNAME, userName);
             request.getRequestDispatcher(Stringutils.PAGE_URL_LOGIN).forward(request, response);
         }
+        
+       
+        
+        
     }
+    
 }
 

@@ -29,10 +29,10 @@ String contextPath = request.getContextPath();
 	href="<%=contextPath%>/stylesheet/userhome.css" />
 <body>
 <jsp:include page="<%=Stringutils.PAGE_URL_HEADER%>" />
-<h1 style='Text-align:center;'>Hey <%=cookieUsername %>. Let's track your expense and income</h1>
+<h1 style='Text-align:center;'>Hey <%=userSessions %>. Let's track your expense and income</h1>
 <div class="main">
 <div class="expense">
-<form action="" method="post">
+<form action="<%= contextPath%>/expense" method="post">
 <h1>Expense</h1>
 <label for = "expenseAmount"> Expense Amount </label> <br>
 <input type="text" id="expenseAmount" name="expenseAmount" required><br>
@@ -53,23 +53,23 @@ String contextPath = request.getContextPath();
     </form>
 </div>
 <div class= "income">
-<form action="" method="post">
+<form action="<%= contextPath%>/income" method="post">
 <h1> Income</H1>
 <label for = "incomeAmount"> Income Amount </label> <br>
 <input type="text" id="incomeAmount" name="incomeAmount" required><br>
 <label for = "incomeCategory"> Income Category </label> <br>
-<select id="expenseCategory"	name="expenseCategory" required>
-						<option value="Housing">Housing</option>
-						<option value="Utilities">Utilities</option>
-						<option value="Transportation">Transportation</option>
-						<option value="Food">Food</option>
-						<option value="Entertainment">Entertainment</option>
+<select id="incomeCategory"	name="incomeCategory" required>
+						<option value="Housing">Salary</option>
+						<option value="Utilities">Rental Income</option>
+						<option value="Transportation">Investment</option>
+						<option value="Food">Freelance Earning</option>
+						<option value="Entertainment">Bank Interest Income </option>
 						<option value="Healthcare">Health care</option>
 					</select><br>
 					<label for = "incomeDate"> Income Date</label> <br>
 <input type="date"id="incomeDate" name="incomeDate" required>
 <label for="subject">Income Description</label><br>
-    <textarea id="subject" name="expenseDesc" placeholder="Income"></textarea>
+    <textarea id="subject" name="incomeDesc" placeholder="Income"></textarea>
     <input type="submit" name="addIncome" value="Add Income">
     </form>
 </div>

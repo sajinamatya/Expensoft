@@ -11,6 +11,7 @@ String errMsg = (String) request.getAttribute(Stringutils.MESSAGE_ERROR);
 String successMsg = (String) request.getAttribute(Stringutils.MESSAGE_SUCCESS);
 String username = (String) request.getAttribute(Stringutils.USERNAME);
 String successParam = request.getParameter(Stringutils.SUCCESS);
+String user_id = (String) request.getAttribute(Stringutils.USER_ID);
 %>
 
 <!DOCTYPE html>

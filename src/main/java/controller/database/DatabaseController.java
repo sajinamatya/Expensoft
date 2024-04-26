@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.ExpenseModel;
+import model.IncomeModel;
 import model.LoginModel;
 import model.PasswordEncryptionWithAes;
 import model.SignupModel;
@@ -191,5 +193,104 @@ public class DatabaseController  {
 	        // Return -2 to indicate an internal error
 	        return -2;
 	    }
+	}
+	
+	public int extractUser_Id(String username) {
+		try{
+			PreparedStatement st = getConnection()
+        		.prepareStatement(Stringutils.QUERY_GET_USER_ID);
+			st.setString(1, username);
+			ResultSet result = st.executeQuery();
+			if(result.next()) {
+				int user_id = result.getInt(Stringutils.USER_ID);
+				return user_id;
+			}
+			else { return -1; }
+		
+		
+		}
+		catch(ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        return -2; // Internal error
+	    }
+		
+	}
+	public int userExpense(ExpenseModel expense) {
+		try {
+			
+			PreparedStatement st = getConnection()
+	        		.prepareStatement(Stringutils.QUERY_USER_EXPENSE);
+			 // Set the user detail in the prepared statement
+	        st.setInt(1,expense.getUser_id());
+	        st.setFloat(2,expense.getExpense_amount() );
+	        st.setDate(3, Date.valueOf(expense.getExpense_date()));
+	        st.setString(4, expense.getExpense_category());
+	        st.setString(5, expense.getExpense_description());
+	        
+
+	        // Execute the update statement and store the number of affected rows
+	        int result = st.executeUpdate();
+	     // Check if the update was successful (i.e., at least one row affected)
+	        if (result > 0) {
+	            return 1; // Expense added successful
+	        } 
+	        else {
+	            return 0; // Expense adding process  failed (no rows affected)
+	        }
+			
+			
+			
+		}	
+			
+	
+		// Check if the update was successful (i.e., at least one row affected)
+       
+
+     catch (ClassNotFoundException | SQLException ex) {
+        // Print the stack trace for debugging purposes
+        ex.printStackTrace();
+        return -1; // Internal error
+    }
+		
+		
+		
+	}
+	public int userIncome(IncomeModel income) {
+		try {
+			
+			PreparedStatement st = getConnection()
+	        		.prepareStatement(Stringutils.QUERY_USER_INCOME);
+			 // Set the user detail in the prepared statement
+	        st.setInt(1,income.getUser_id());
+	        st.setFloat(2,income.getIncome_amount() );
+	        st.setDate(3, Date.valueOf(income.getIncome_date()));
+	        st.setString(4, income.getIncome_category());
+	        st.setString(5, income.getIncome_description());
+	        
+
+	        // Execute the update statement and store the number of affected rows
+	        int result = st.executeUpdate();
+	     // Check if the update was successful (i.e., at least one row affected)
+	        if (result > 0) {
+	            return 1; // Expense added successful
+	        } 
+	        else {
+	            return 0; // Expense adding process  failed (no rows affected)
+	        }
+			
+			
+			
+		}	
+			
+	
+		// Check if the update was successful (i.e., at least one row affected)
+       
+
+     catch (ClassNotFoundException | SQLException ex) {
+        // Print the stack trace for debugging purposes
+        ex.printStackTrace();
+        return -1; // Internal error
+    }
 	}
 	}

@@ -51,10 +51,18 @@ public class SignUp extends HttpServlet {
 		String password = request.getParameter(Stringutils.PASSWORD);
 		
 		
-		if(databaseController.checkEmailIfExists(email) == true || databaseController.checkNumberIfExists(phoneNumber) == true || databaseController.checkUsernameIfExists(username)== true) {
+		if(databaseController.checkEmailIfExists(email) == true  ) {
 			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_EMAIL);
 			request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
 			
+		}
+		else if (databaseController.checkNumberIfExists(phoneNumber) == true) {
+			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_PHONE_NUMBER);
+			request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
+		}
+		else if(databaseController.checkUsernameIfExists(username)== true) {
+			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_USERNAME);
+			request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
 		}
 		else {
 
