@@ -96,7 +96,7 @@ public class Stringutils {
 		public static final String SERVLET_URL_INCOME = "/income";
 		// End: Servlet Route Path
 
-		// Start: Normal Text
+		// Start: NormalText
 		public static final String USER = "user";
 		public static final String SUCCESS = "success";
 		public static final String TRUE = "true";
