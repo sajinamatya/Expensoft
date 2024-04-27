@@ -36,7 +36,8 @@ String user_id = (String) request.getAttribute(Stringutils.USER_ID);
 			<input type="password" id="password" name ='password' placeholder="Password" required>
 			
 			<input type="submit" name="" value="Login">
-			<p>Don't have an account? <a href="<%=contextPath%>/pages/signup.jsp">Signup</a><p>
+			<p>Don't have an account? <a href="<%=contextPath%>/pages/signup.jsp">Signup</a><br>Forgot your password? <a href="<%=contextPath%>/pages/forgotpassword.jsp">Forgot password</a><p>
+			
 <%
 		if (errMsg != null) {
 			// print

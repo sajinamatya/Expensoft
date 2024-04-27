@@ -5,12 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 import model.ExpenseModel;
 import model.IncomeModel;
 import model.LoginModel;
 import model.PasswordEncryptionWithAes;
-import model.SignupModel;
+import model.UserModel;
 
 import utils.Stringutils;
 
@@ -37,7 +39,7 @@ public class DatabaseController  {
 	 * @param user object of SignupModel class 
 	 * @return 
 	 */
-	public int signupUser(SignupModel user) {
+	public int signupUser(UserModel user) {
 
 	    try {
 	        // Prepare a statement using the predefined sql query for user sign up
@@ -292,5 +294,43 @@ public class DatabaseController  {
         ex.printStackTrace();
         return -1; // Internal error
     }
+	}
+	
+	
+	public ArrayList<UserModel> getAllUserInfo() {
+		try {
+			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_GET_ALL_STUDENTS);
+			ResultSet result = stmt.executeQuery();
+
+			ArrayList<UserModel> userArraylist = new ArrayList<UserModel>();
+
+			while (result.next()) {
+				UserModel users = new UserModel();
+				users.setFullName(result.getString("Full_name"));
+				users.setDateOfBirth(result.getDate("date_of_birth").toLocalDate());
+				users.setEmail(result.getString("email"));
+				users.setGender(result.getString("gender"));
+				users.setPhoneNumber(result.getString("number"));
+				
+				student.setImageUrlFromDB(result.getString("image"));
+				student.setUsername(result.getString("user_name"));				
+				students.add(student);
+			}
+			return students;
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
+	public int deleteStudentInfo(String username) {
+		try (Connection con = getConnection()) {
+			PreparedStatement st = con.prepareStatement(Stringutils.QUERY_DELETE_USER);
+			st.setString(1, username);
+			return st.executeUpdate();
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace(); // Log the exception for debugging
+			return -1;
+		}
 	}
 	}

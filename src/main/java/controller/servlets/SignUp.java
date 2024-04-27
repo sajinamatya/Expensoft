@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import controller.database.DatabaseController;
-import model.SignupModel;
 
+import model.UserModel;
 import utils.Stringutils;
 
 
@@ -67,7 +67,7 @@ public class SignUp extends HttpServlet {
 		else {
 
 			// Creating  a Sign up model  object to hold user details
-			SignupModel user = new SignupModel(fullName,email,username,gender,phoneNumber,address,password,securityQn,dateOfBirth);
+			UserModel user = new UserModel(fullName,email,username,gender,phoneNumber,address,password,securityQn,dateOfBirth);
 		
 		
 

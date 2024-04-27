@@ -27,6 +27,7 @@ public class Stringutils {
 		public static final String QUERY_CHECK_PHONENUMBER = " SELECT phone_number FROM user WHERE phone_number = ?";
 		public static final String QUERY_CHECK_USERNAME = "SELECT user_name FROM user WHERE user_name = ?";
 		public static final String QUERY_GET_USER_ID = "SELECT user_id FROM user WHERE user_name = ?";
+		public static final String QUERY_DELETE_USER = " DELETE FROM user where user_id = ?";
 		// End: SQl Queries
 
 		// Start: Parameter names
@@ -103,6 +104,6 @@ public class Stringutils {
 		public static final String JSESSIONID = "JSESSIONID";
 		public static final String LOGIN = "Login";
 		public static final String LOGOUT = "Logout";
-		public static final String STUDENT_MODEL = "studentModel";
+		
 		// End: Normal Text
 }
