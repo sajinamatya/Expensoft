@@ -87,9 +87,11 @@ public class Stringutils {
 		public static final String PAGE_URL_USER_HOME = "/pages/userhome.jsp";
 		public static final String PAGE_URL_HEADER = "/pages/header.jsp" ;
 		public static final String PAGE_URL_ADMIN = "/pages/admindashboard.jsp" ;
+		public static final String PAGE_URL_ADMIN_HOME = "/pages/adminhome.jsp" ;
 		// End: JSP Route
 
 		// Start: Servlet Route Path
+		public static final String SERVLET_URL_ADMIN_HOME = "/adminhome";
 		public static final String SERVLET_URL_LOGIN = "/login";
 		public static final String SERVLET_URL_SIGNUP = "/signup";
 		public static final String SERVLET_URL_LOGOUT = "/logout";
@@ -104,6 +106,6 @@ public class Stringutils {
 		public static final String JSESSIONID = "JSESSIONID";
 		public static final String LOGIN = "Login";
 		public static final String LOGOUT = "Logout";
-		
+		public static final String USER_LIST = "userList";
 		// End: Normal Text
 }

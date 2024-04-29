@@ -2,6 +2,7 @@ package model;
 import java.time.LocalDate;
 
 public class UserModel{
+	
 	private String fullName;
 	private String email;
 	private String userName;

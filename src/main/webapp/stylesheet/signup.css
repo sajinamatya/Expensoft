@@ -19,7 +19,7 @@ body {
 	width:1050px;
 	padding:10px;
 	height: 600px;
-    margin: 30px auto;
+    margin: 5px auto;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -91,8 +91,11 @@ input:focus,select:focus{
 .signup-left input[type="submit"]:hover {
     background-color: #5D7986;
 }
+h3{
+	
+}
 .error-msg{
-	color: red;
+	color: rgb(255, 0, 0);
 }
 
 .success-msg{

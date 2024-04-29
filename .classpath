@@ -13,6 +13,20 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/apache-tomcat-8.5.99/lib/mysql-connector-j-8.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/LENOVO/Downloads/taglibs1.2.5_567c6956-9a6d-4a34-9850-84357918438a_93445_/taglibs-standard-impl-1.2.5.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/LENOVO/Downloads/taglibs1.2.5_567c6956-9a6d-4a34-9850-84357918438a_93445_/taglibs-standard-spec-1.2.5.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/apache-tomcat-8.5.99/lib/mysql-connector-j-8.3.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

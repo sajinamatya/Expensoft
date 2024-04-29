@@ -11,11 +11,12 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=contextPath%>/stylesheet/signup.css" />
 <body>
+
 <div class="signup-form">
 <div class = 'signup-left'> 
 		<h1>Signup</h1>
 		<h2> Track your expense and income</h2>
-		<form action="<%=contextPath%>/signup" method="post">
+		<form action="<%=contextPath%>/signup" method="post" >
 			<div class="row">
 				<div class="col">
 					<label for="fullName">Full Name :</label> <input type="text"
@@ -71,32 +72,32 @@
 				</div>
 				
 			</div>
-			<input type="submit" name="" value="Sign up"> 
+			<input type="submit" name="" value="Sign up" onclick="return checkPasswordsMatch()"> 
 			<h2>Already have an account?<a href ="<%=contextPath%>/pages/login.jsp" style="text-decoration:None;"> login</a></h2>
 		</form>
-<%
+		<%
 		String errMsg = (String) request.getAttribute(Stringutils.MESSAGE_ERROR);
 		String successMsg = (String) request.getAttribute(Stringutils.MESSAGE_SUCCESS);
 
 		if (errMsg != null) {
 			// print
 		%>
-		<h4 class="error-msg">
+		<h2 class="error-msg">
 			<%
 			out.println(errMsg);
 			%>
-		</h4>
+		</h2>
 		<%
 		}
 
 		if (successMsg != null) {
 		// print
 		%>
-		<h4 class="success-msg">
+		<h2 class="success-msg">
 			<%
 			out.println(successMsg);
 			%>
-		</h4>
+		</h2>
 		<%
 		}
 		%>
@@ -106,4 +107,23 @@
 	<div class='signup-right'></div>
 </div>
 </body>
+<script type="text/javascript">
+function checkPasswordsMatch() {
+   
+    var password = document.getElementById("password").value;
+    var rePassword = document.getElementById("retypePassword").value;
+
+ 
+    if (password === rePassword) {
+        return true;
+    } 
+    else {
+    
+        alert("Passwords do not match. Please re-enter your password.");
+        
+       
+        
+        return false;
+    }
+}</script>
 </html>

@@ -83,7 +83,7 @@ public class Login extends HttpServlet {
 			response.addCookie(userCookie);
 			
 			request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_LOGIN);
-			response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_ADMIN); 
+			response.sendRedirect(request.getContextPath() + Stringutils.SERVLET_URL_ADMIN_HOME); 
 			}
          else if (loginResult == 0) {
             // Username or password mismatch

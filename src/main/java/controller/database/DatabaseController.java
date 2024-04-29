@@ -299,31 +299,31 @@ public class DatabaseController  {
 	
 	public ArrayList<UserModel> getAllUserInfo() {
 		try {
-			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_GET_ALL_STUDENTS);
+			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_GET_ALL_USER);
 			ResultSet result = stmt.executeQuery();
 
 			ArrayList<UserModel> userArraylist = new ArrayList<UserModel>();
 
 			while (result.next()) {
 				UserModel users = new UserModel();
-				users.setFullName(result.getString("Full_name"));
+				users.setFullName(result.getString("full_name"));
 				users.setDateOfBirth(result.getDate("date_of_birth").toLocalDate());
 				users.setEmail(result.getString("email"));
 				users.setGender(result.getString("gender"));
-				users.setPhoneNumber(result.getString("number"));
-				
-				student.setImageUrlFromDB(result.getString("image"));
-				student.setUsername(result.getString("user_name"));				
-				students.add(student);
+				users.setPhoneNumber(result.getString("phone_number"));
+				users.setUserName(result.getString("user_name"));				
+				userArraylist.add(users);
 			}
-			return students;
+			
+		    return userArraylist;
 		} catch (SQLException | ClassNotFoundException ex) {
 			ex.printStackTrace();
 			return null;
 		}
+		
 	}
 
-	public int deleteStudentInfo(String username) {
+	public int deleteUserInfo(String username) {
 		try (Connection con = getConnection()) {
 			PreparedStatement st = con.prepareStatement(Stringutils.QUERY_DELETE_USER);
 			st.setString(1, username);

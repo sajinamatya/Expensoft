@@ -6,15 +6,15 @@ body{
 
 .main{
 	display:flex;
-	width:1200px;
+	width:1000px;
 	height : 700px;
-	margin: 50px auto;
+	margin: 20px auto;
 	justify-content:space-between;
 }
 .expense, .income {
 	border-radius: 50px;
-	width: 600px;
-	height : 700px;
+	width: 500px;
+	height : 650px;
 	background-color:#759A9B;
 }
 .income{
@@ -50,7 +50,7 @@ label{
   display: block;
   
   font-size: 20px;
-  margin: 40px 0px 0px 70px ;
+  margin: 20px 0px 0px 80px ;
   text-align: center;
   border: 2px solid rgb(0, 0, 0);
   padding: 12px 40px;
