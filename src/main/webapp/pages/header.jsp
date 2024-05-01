@@ -14,9 +14,9 @@
     <header class="header">
        
         <ul class="main-nav">
-            <li><a href="#"><img alt="" src="<%=contextPath %>/resources/home_icon.svg" width = 30 height= 30></a></li>
-            <li><a href="#"><img alt="" src="<%=contextPath %>/resources/dashboard.svg" width = 30 height= 30></a></li>
-            <li class="profile"><a href="#"><img alt="" src="<%=contextPath %>/resources/profile.svg" width = 30 height= 30></a></li>
+            <li><a href="#"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/home_icon.svg" width = 30 height= 30></a></li>
+            <li><a href="#"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/dashboard.svg" width = 30 height= 30></a></li>
+            <li class="profile"><a href="<%= contextPath + Stringutils.PAGE_URL_PROFILE %>"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/profile.svg" width = 30 height= 30></a></li>
            
             <li>
                 <form action="<%

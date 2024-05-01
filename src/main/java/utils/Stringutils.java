@@ -1,5 +1,7 @@
 package utils;
 
+import java.io.File;
+
 public class Stringutils {
 
 	// Start: Database Connection
@@ -11,8 +13,8 @@ public class Stringutils {
 
 		// Start: SQl Queries
 		public static final String QUERY_SIGNUP_USER = "INSERT INTO user ("
-				+ "full_name, email, date_of_birth, gender,phone_number, address, user_name, password,security_question) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+				+ "full_name, email, date_of_birth, gender,phone_number, address, user_name, password,security_question,image) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 		public static final String QUERY_USER_EXPENSE = "INSERT INTO expense ("
 				+ "user_id, expense_amount, expense_date,expense_category, expense_description) "
 				+ "VALUES (?, ?, ?, ?, ?)";
@@ -21,13 +23,16 @@ public class Stringutils {
 				+ "user_id, income_amount, income_date,income_category, income_description) "
 				+ "VALUES (?, ?, ?, ?, ?)";
 		
-		public static final String QUERY_LOGIN_USER_CHECK = "SELECT * FROM user WHERE user_name = ?";
-		public static final String QUERY_GET_ALL_USER = "SELECT * FROM user";
+		public static final String QUERY_USER_CHECK = "SELECT * FROM user WHERE user_name = ?";
+		public static final String QUERY_GET_ALL_USER = "SELECT * FROM user where user_name  != 'admin'";
 		public static final String QUERY_CHECK_EMAIL = " SELECT email FROM user WHERE email = ?";
 		public static final String QUERY_CHECK_PHONENUMBER = " SELECT phone_number FROM user WHERE phone_number = ?";
 		public static final String QUERY_CHECK_USERNAME = "SELECT user_name FROM user WHERE user_name = ?";
 		public static final String QUERY_GET_USER_ID = "SELECT user_id FROM user WHERE user_name = ?";
-		public static final String QUERY_DELETE_USER = " DELETE FROM user where user_id = ?";
+		public static final String QUERY_DELETE_USER = " DELETE FROM user where user_name = ?";
+		public static final String QUERY_DELETE_USER_EXPENSES = "DELETE FROM expense WHERE user_id = (SELECT user_id FROM user WHERE user_name = ?)";
+		public static final String QUERY_DELETE_USER_INCOMES = "DELETE FROM income WHERE user_id = (SELECT user_id FROM user WHERE user_name = ?)";
+
 		// End: SQl Queries
 
 		// Start: Parameter names
@@ -88,6 +93,7 @@ public class Stringutils {
 		public static final String PAGE_URL_HEADER = "/pages/header.jsp" ;
 		public static final String PAGE_URL_ADMIN = "/pages/admindashboard.jsp" ;
 		public static final String PAGE_URL_ADMIN_HOME = "/pages/adminhome.jsp" ;
+		public static final String PAGE_URL_PROFILE = "/pages/profilepage.jsp" ;
 		// End: JSP Route
 
 		// Start: Servlet Route Path
@@ -97,6 +103,7 @@ public class Stringutils {
 		public static final String SERVLET_URL_LOGOUT = "/logout";
 		public static final String SERVLET_URL_EXPENSE = "/expense";
 		public static final String SERVLET_URL_INCOME = "/income";
+		public static final String SERVLET_URL_MODIFY_USER= "/modify";
 		// End: Servlet Route Path
 
 		// Start: NormalText
@@ -107,5 +114,19 @@ public class Stringutils {
 		public static final String LOGIN = "Login";
 		public static final String LOGOUT = "Logout";
 		public static final String USER_LIST = "userList";
+		public static final String DELETE_ID= "delete";
+		public static final String UPDATE_ID= "update";
 		// End: Normal Text
+		
+		
+		// start : part file 
+		public static final String IMAGE_DIR = "xampp\\tomcat\\webapps\\images\\";
+		public static final String IMAGE_DIR_SAVE_PATH = "C:" + File.separator + IMAGE_DIR;
+		
+		public static final String IMAGE_ROOT_PATH = "Users\\LENOVO\\Expensoft\\src\\main\\webapp\\resources\\images\\";
+		public static final String IMAGE_DIR_USER = "C:/" + IMAGE_ROOT_PATH + "User\\";
+				
+		
+		
+		// end : part file 
 }

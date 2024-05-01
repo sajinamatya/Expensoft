@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.ExpenseModel;
 import model.IncomeModel;
@@ -57,6 +61,7 @@ public class DatabaseController  {
 	        st.setString(8, PasswordEncryptionWithAes.encrypt(
 	        		user.getUserName(), user.getPassword()));
 	        st.setString(9,user.getSecurityQn());
+	        st.setString(10, user.getImageUrlFromPart());
 
 	        // Execute the update statement and store the number of affected rows
 	        int result = st.executeUpdate();
@@ -154,7 +159,7 @@ public class DatabaseController  {
 	    try {
 	        // Prepare a statement using the predefined query for login check
 	        PreparedStatement st = getConnection()
-	        		.prepareStatement(Stringutils.QUERY_LOGIN_USER_CHECK);
+	        		.prepareStatement(Stringutils.QUERY_USER_CHECK);
 
 	        // Set the user name in the first parameter of the prepared statement
 	        st.setString(1, loginModel.getUsername());
@@ -311,7 +316,8 @@ public class DatabaseController  {
 				users.setEmail(result.getString("email"));
 				users.setGender(result.getString("gender"));
 				users.setPhoneNumber(result.getString("phone_number"));
-				users.setUserName(result.getString("user_name"));				
+				users.setUserName(result.getString("user_name"));	
+				users.setAddress(result.getString("address"));
 				userArraylist.add(users);
 			}
 			
@@ -322,15 +328,94 @@ public class DatabaseController  {
 		}
 		
 	}
+	
+	public void setUserdetailToSession(String username,HttpServletRequest request, HttpServletResponse response) {
+		try {
+			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_USER_CHECK);
+			stmt.setString(1,username);
+			ResultSet result = stmt.executeQuery();
+			
+			
+			
+
+			while (result.next()) {
+				String user_id = String.valueOf(result.getInt("user_id"));
+				String fullname = result.getString("full_name");
+				String email = result.getString("email");
+				String gender = result.getString("gender");
+				String address = result.getString("address");
+				String user_name = result.getString("user_name");
+				String phone = result.getString("phone_number");
+				String imageurl = result.getString("image");
+				HttpSession session = request.getSession(true);
+				session.setAttribute(Stringutils.USERNAME, user_name);
+				session.setAttribute(Stringutils.USER_ID, user_id);
+				session.setAttribute("email", email);
+				session.setAttribute("gender", gender);
+				session.setAttribute("address", address);
+				session.setAttribute("phone", phone);
+				session.setAttribute("fullname", fullname);
+				session.setAttribute("image", imageurl);
+				session.setMaxInactiveInterval(30*60);
+				
+				Cookie userCookie= new Cookie(Stringutils.USER, user_name);
+				Cookie userCookieId = new Cookie("user_id",user_id);
+				Cookie userCookieEmail = new Cookie("email", email);
+				Cookie userCookiePhone = new Cookie("phonenumber",phone);
+				Cookie userCookieGender = new Cookie("gender",gender);
+				userCookie.setMaxAge(30*60);
+				response.addCookie(userCookie);
+				response.addCookie(userCookieId);
+				response.addCookie(userCookieEmail);
+				response.addCookie(userCookiePhone);
+				response.addCookie(userCookieGender);;
+			}
+			
+		   
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			
+		}
+
+		
+	} 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public int deleteUserInfo(String username) {
 		try (Connection con = getConnection()) {
-			PreparedStatement st = con.prepareStatement(Stringutils.QUERY_DELETE_USER);
-			st.setString(1, username);
-			return st.executeUpdate();
-		} catch (SQLException | ClassNotFoundException ex) {
-			ex.printStackTrace(); // Log the exception for debugging
+	       
+	        try (PreparedStatement st1 = con.prepareStatement(Stringutils.QUERY_DELETE_USER_EXPENSES)) {
+	            st1.setString(1, username);
+	            st1.executeUpdate();
+	        }
+
+	        
+	        try (PreparedStatement st2 = con.prepareStatement(Stringutils.QUERY_DELETE_USER_INCOMES)) {
+	            st2.setString(1, username);
+	            st2.executeUpdate();
+	        }
+
+	   
+	        try (PreparedStatement st3 = con.prepareStatement(Stringutils.QUERY_DELETE_USER)) {
+	            st3.setString(1, username);
+	            return st3.executeUpdate();
+	        }
+		}catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace(); 
 			return -1;
 		}
+	
+	
 	}
-	}
+}
+
+

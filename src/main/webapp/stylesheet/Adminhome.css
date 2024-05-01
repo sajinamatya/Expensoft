@@ -17,11 +17,17 @@ table{
 
 table tr:nth-child(even){background-color: #f2f2f2;}
 
-table tr:hover {background-color: #5D7986;}
+table tr:hover {background-color:#0080ff;}
 
 table th {
   padding:12px;
   text-align: left;
   background-color: #35b0ca;
   color: white;
+}
+button{
+	border-radius:50px;border: none;background: none;
+}
+button:hover{
+	background-color:#FF7F7F ;
 }

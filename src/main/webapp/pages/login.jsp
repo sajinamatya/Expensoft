@@ -24,7 +24,7 @@ String user_id = (String) request.getAttribute(Stringutils.USER_ID);
 <body>
 <div class= "login-main">
 
-	<div class="login-left"> <img alt="" src="<%=contextPath%>/resources/image1.jpg" width=600 height=500>
+	<div class="login-left"> <img alt="" src="<%=contextPath%>/resources/images/Userinterface/image1.jpg" width=600 height=500>
 	</div>
 	
 	<div class ="login-right">

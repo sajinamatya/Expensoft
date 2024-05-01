@@ -16,7 +16,7 @@
 <div class = 'signup-left'> 
 		<h1>Signup</h1>
 		<h2> Track your expense and income</h2>
-		<form action="<%=contextPath%>/signup" method="post" >
+		<form action="<%=contextPath%>/signup" method="post" enctype ="multipart/form-data" >
 			<div class="row">
 				<div class="col">
 					<label for="fullName">Full Name :</label> <input type="text"
@@ -70,8 +70,15 @@
 					<label for="Retype Password"> Retype Password:</label> <input
 						type="password" id="retypePassword" name="retypePassword" required>
 				</div>
+				</div>
+				<div class ="row"> 
+				<div class = 'col'> 
+				<label for = "image"> Profile picture </label> <input type ="file" id ="image" name ="image">
+ 				</div>
 				
-			</div>
+				</div>
+				
+			
 			<input type="submit" name="" value="Sign up" onclick="return checkPasswordsMatch()"> 
 			<h2>Already have an account?<a href ="<%=contextPath%>/pages/login.jsp" style="text-decoration:None;"> login</a></h2>
 		</form>

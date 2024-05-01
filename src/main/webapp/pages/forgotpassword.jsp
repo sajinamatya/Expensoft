@@ -24,7 +24,7 @@ String user_id = (String) request.getAttribute(Stringutils.USER_ID);
 <body>
 <div class= "forgot-main">
 
-	<div class="forgot-left"> <img alt="" src="<%=contextPath%>/resources/forgot_image.jpg" width=600 height=500>
+	<div class="forgot-left"> <img alt="" src="<%=contextPath%>/resources/images/Userinterface/forgot_image.jpg" width=600 height=500>
 	</div>
 	
 	<div class ="forgot-right">

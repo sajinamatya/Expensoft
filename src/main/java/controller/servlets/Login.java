@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
         // Extract username and password from the request parameters
         String userName = request.getParameter(Stringutils.USERNAME);
         String password = request.getParameter(Stringutils.PASSWORD);
-        String user_id = String.valueOf(DatabaseController.extractUser_Id(userName));
+       
         // Create a LoginModel object to hold user credentials
         LoginModel loginModel = new LoginModel(userName, password);
         
@@ -57,19 +57,7 @@ public class Login extends HttpServlet {
         if (loginResult == 1) {
             // Login successful
         	
-        	HttpSession userSession = request.getSession();
-			userSession.setAttribute(Stringutils.USERNAME, userName);
-			userSession.setAttribute(Stringutils.USER_ID, user_id);
-			userSession.setMaxInactiveInterval(30*60);
-			
-			Cookie userCookie= new Cookie(Stringutils.USER, userName);
-			Cookie userCookieId = new Cookie("user_id",user_id);
-			userCookie.setMaxAge(30*60);
-			response.addCookie(userCookie);
-			response.addCookie(userCookieId);
-			
-			
-			
+        	DatabaseController.setUserdetailToSession(userName,request,response);
             request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_LOGIN);
 			response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_USER_HOME);
 			}

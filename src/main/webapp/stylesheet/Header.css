@@ -35,13 +35,13 @@ a {
  .main-nav  li a {
 	padding: 5px 15px;
 	text-transform: uppercase;
-	text-align: right;	
+	text-align: center;	
 	display: block;
 	
 	
 }
 .main-nav li {
-	margin-left:250px;
+	margin-left:200px;
 }
  .main-nav .profile{
 	

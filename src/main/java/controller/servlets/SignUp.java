@@ -4,11 +4,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.Part;
 
 import controller.database.DatabaseController;
 
@@ -21,6 +22,9 @@ import utils.Stringutils;
  * Servlet implementation class SignUp
  */
 @WebServlet(urlPatterns = Stringutils.SERVLET_URL_SIGNUP, asyncSupported = true)
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+maxFileSize = 1024 * 1024 * 10, // 10MB
+maxRequestSize = 1024 * 1024 * 50)
 public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final DatabaseController databaseController;
@@ -49,6 +53,7 @@ public class SignUp extends HttpServlet {
 		String address = request.getParameter(Stringutils.ADDRESS);
 		String securityQn = request.getParameter(Stringutils.SECURITY_QUESTION);
 		String password = request.getParameter(Stringutils.PASSWORD);
+		Part imagePart = request.getPart("image");	
 		
 		
 		if(databaseController.checkEmailIfExists(email) == true  ) {
@@ -67,8 +72,13 @@ public class SignUp extends HttpServlet {
 		else {
 
 			// Creating  a Sign up model  object to hold user details
-			UserModel user = new UserModel(fullName,email,username,gender,phoneNumber,address,password,securityQn,dateOfBirth);
-		
+			
+			UserModel user = new UserModel(fullName,email,username,gender,phoneNumber,address,password,securityQn,dateOfBirth,imagePart);
+			// upload the image in server path if the file name is not empty or not null 
+			String savePath = Stringutils.IMAGE_DIR_USER;
+			String fileName = user.getImageUrlFromPart();
+			if(!fileName.isEmpty() && fileName != null)
+				imagePart.write(savePath + fileName);
 		
 
 		// Calling DatabaseController to sign up  the user 

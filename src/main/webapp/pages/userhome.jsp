@@ -6,15 +6,7 @@ String contextPath = request.getContextPath();
 <%
 		String userSessions = (String) session.getAttribute(Stringutils.USERNAME);
 		
-		String cookieUsername  = null;
-		String cookieSessionID = null;
-		Cookie[] cookies = request.getCookies();
-		if(cookies != null){
-			for(Cookie cookie: cookies){
-				if(cookie.getName().equals(Stringutils.USER)) cookieUsername = cookie.getValue();
-				if(cookie.getName().equals(Stringutils.JSESSIONID)) cookieSessionID = cookie.getValue();
-			}
-		}
+		
 	%>
 <%@page import="utils.Stringutils"%>
 <!DOCTYPE html>

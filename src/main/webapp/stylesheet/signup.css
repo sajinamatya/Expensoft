@@ -18,7 +18,7 @@ body {
 	background-color:#759A9B ;
 	width:1050px;
 	padding:10px;
-	height: 600px;
+	height: 700px;
     margin: 5px auto;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -29,11 +29,13 @@ body {
 	margin:0;
 }
 .signup-right{
-	background-image:url(../resources/44.jpg);
-	background-size:cover;
+	background-image:url(../resources/images/Userinterface/44.jpg);
+	background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 	width:600px;
 	margin-left:5px;
-	border-radius: 20% 10% 50% 60% ;
+	border-radius: 20% 10% 30% 40% ;
 }
 
 
