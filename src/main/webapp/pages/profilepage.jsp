@@ -11,6 +11,7 @@ String contextPath = request.getContextPath();
  String userSessiongender = (String) session.getAttribute("gender");
  String userSessionaddress = (String) session.getAttribute("address");
  String userSessionimage = (String) session.getAttribute("image");
+
  %>
 <%@page import="utils.Stringutils"%>
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ String contextPath = request.getContextPath();
 
 	<div class="profile-main">
 	<img alt="" src="">
-	<form action="<%= contextPath%>/profilebase" method="POST" enctype ="multipart/form-data" >
+	<form action="<%=contextPath%>/profile" method="POST"  >
 			
 			<img src="<%= contextPath%>/resources/images/User/<%=userSessionimage %>" 
 							class="image" alt="..." height = 200 width = 200><br>
@@ -36,17 +37,18 @@ String contextPath = request.getContextPath();
 			<input type="text" id="email" name ='email' value="<%=userSessionemail %>" ><br>
 			
 		<label for="phone">Phone Number :</label><br>
-			<input type="text" id="phone" name ='phone' value="<%=userSessionphone%>"  ><br>
+			<input type="text" id="phone" name ='phoneNumber' value="<%=userSessionphone%>"  ><br>
 		<label for="fullname">Full Name :</label>	<br>
-		<input type="text" id="fullname" name ='fullname' value="<%=userSessionfullname%>"  ><br>
+		<input type="text" id="fullName" name ="fullName" value="<%=userSessionfullname%>"  ><br>
 		<label for="userName">User Name :</label>	<br>
  
 			<input type="text" id="name" name = 'userName' value ="<%=userSessionsname %>" ><br>
 			<label for="userName">Gender : <%=userSessiongender %> </label>	<br>
+			
 			<label for="address">Address:</label>	<br>
 			<input type="text" id="address" name = 'address' value ="<%=userSessionaddress%>"><br>
 			<label for="address">New password :</label>	<br>
-			<input type="password" id="password" name = 'newpassword'  required><br>
+			<input type="password" id="password" name = 'password'  ><br>
 			<input type="submit" name="" value="save changes">
 	
 	

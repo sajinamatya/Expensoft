@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.http.Cookie;
@@ -302,6 +303,44 @@ public class DatabaseController  {
 	}
 	
 	
+	public int updateUserProfile(UserModel user, int user_id) {
+		
+		try {
+			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_UPDATE_USER_PROFILE);
+			
+			 stmt.setString(1,user.getFullName());
+			 stmt.setString(2,user.getEmail());
+			 stmt.setString(3,user.getPhoneNumber());
+			 stmt.setString(4,user.getAddress());
+			 stmt.setString(5,user.getUserName());
+			 stmt.setInt(6,user_id);
+			 int result = stmt.executeUpdate();
+			 
+		     // Check if the update was successful (i.e., at least one row affected)
+		        if (result > 0) {
+		            return 1; // user data updated   successful
+		        } 
+		        else {
+		            return 0; // user updating   process  failed (no rows affected)
+		        }
+				
+			
+			
+		}
+		catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			return -1;
+		}
+		
+		
+		
+		
+
+		
+		
+		}
+	
+	
 	public ArrayList<UserModel> getAllUserInfo() {
 		try {
 			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_GET_ALL_USER);
@@ -346,7 +385,9 @@ public class DatabaseController  {
 				String address = result.getString("address");
 				String user_name = result.getString("user_name");
 				String phone = result.getString("phone_number");
+				Date date = result.getDate("date_Of_birth");
 				String imageurl = result.getString("image");
+				
 				HttpSession session = request.getSession(true);
 				session.setAttribute(Stringutils.USERNAME, user_name);
 				session.setAttribute(Stringutils.USER_ID, user_id);
@@ -356,6 +397,7 @@ public class DatabaseController  {
 				session.setAttribute("phone", phone);
 				session.setAttribute("fullname", fullname);
 				session.setAttribute("image", imageurl);
+				session.setAttribute("date",date);
 				session.setMaxInactiveInterval(30*60);
 				
 				Cookie userCookie= new Cookie(Stringutils.USER, user_name);
@@ -363,12 +405,14 @@ public class DatabaseController  {
 				Cookie userCookieEmail = new Cookie("email", email);
 				Cookie userCookiePhone = new Cookie("phonenumber",phone);
 				Cookie userCookieGender = new Cookie("gender",gender);
+				Cookie userCookieDate = new Cookie("date",date.toString());
 				userCookie.setMaxAge(30*60);
 				response.addCookie(userCookie);
 				response.addCookie(userCookieId);
 				response.addCookie(userCookieEmail);
 				response.addCookie(userCookiePhone);
-				response.addCookie(userCookieGender);;
+				response.addCookie(userCookieGender);
+				response.addCookie(userCookieDate);
 			}
 			
 		   

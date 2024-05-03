@@ -32,6 +32,7 @@ public class Stringutils {
 		public static final String QUERY_DELETE_USER = " DELETE FROM user where user_name = ?";
 		public static final String QUERY_DELETE_USER_EXPENSES = "DELETE FROM expense WHERE user_id = (SELECT user_id FROM user WHERE user_name = ?)";
 		public static final String QUERY_DELETE_USER_INCOMES = "DELETE FROM income WHERE user_id = (SELECT user_id FROM user WHERE user_name = ?)";
+		public static final String QUERY_UPDATE_USER_PROFILE = "UPDATE user SET full_name = ?, email = ?, phone_number = ?, address = ?, user_name = ? WHERE user_id = ?";
 
 		// End: SQl Queries
 
@@ -104,6 +105,7 @@ public class Stringutils {
 		public static final String SERVLET_URL_EXPENSE = "/expense";
 		public static final String SERVLET_URL_INCOME = "/income";
 		public static final String SERVLET_URL_MODIFY_USER= "/modify";
+		public static final String SERVLET_URL_PROFILE = "/profile";
 		// End: Servlet Route Path
 
 		// Start: NormalText

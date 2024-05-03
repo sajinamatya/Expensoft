@@ -49,6 +49,17 @@ public class UserModel{
 		this.dateOfBirth = dateOfBirth;
 		this.imageUrlFromPart = getImageUrl(imagePart);
 	}
+	public UserModel(String fullName, String email, String userName, String phoneNumber,
+			String address ) {
+		super();
+		this.fullName = fullName;
+		this.email = email;
+		this.userName = userName;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+	
+	}
+	
 
 	/**
 	 * getter method fro imageurlFromPart 
