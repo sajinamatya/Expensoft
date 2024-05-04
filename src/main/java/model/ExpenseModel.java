@@ -8,6 +8,8 @@ public class ExpenseModel{
 	private String expense_category;
 	private String expense_description;
 	
+	
+	public ExpenseModel() {}
 	public ExpenseModel(int user_id, float expense_amount, LocalDate expense_date, String expense_category,
 			String expense_description) {
 		super();
@@ -20,7 +22,7 @@ public class ExpenseModel{
 	public float getExpense_amount() {
 		return expense_amount;
 	}
-	public void setExpense_amount(int expense_amount) {
+	public void setExpense_amount(float expense_amount) {
 		this.expense_amount = expense_amount;
 	}
 	public LocalDate getExpense_date() {

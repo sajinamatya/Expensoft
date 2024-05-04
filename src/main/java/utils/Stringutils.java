@@ -26,6 +26,8 @@ public class Stringutils {
 		public static final String QUERY_USER_CHECK = "SELECT * FROM user WHERE user_name = ?";
 		public static final String QUERY_USER_CHECKPASSWORD = "SELECT username,password FROM user WHERE user_name = ?";
 		public static final String QUERY_GET_ALL_USER = "SELECT * FROM user where user_name  != 'admin'";
+		public static final String QUERY_GET_ALL_INCOME= "SELECT * FROM income WHERE user_id=? ";
+		public static final String QUERY_GET_ALL_EXPENSE= "SELECT * FROM expense WHERE user_id=? ";
 		public static final String QUERY_CHECK_EMAIL = " SELECT email FROM user WHERE email = ?";
 		public static final String QUERY_CHECK_PHONENUMBER = " SELECT phone_number FROM user WHERE phone_number = ?";
 		public static final String QUERY_CHECK_USERNAME = "SELECT user_name FROM user WHERE user_name = ?";
@@ -36,6 +38,8 @@ public class Stringutils {
 		public static final String QUERY_UPDATE_USER_PROFILE = "UPDATE user SET full_name = ?, email = ?, phone_number = ?, address = ?, user_name = ? WHERE user_id = ?";
 		public static final String QUERY_USER_PASSWORD_CHECK = "SELECT user_id,password FROM user WHERE user_id = ? AND password = ?";
 		public static final String QUERY_USER_PASSWORD_UPDATE = "UPDATE user SET password = ? WHERE user_name = ?";
+		public static final String QUERY_TOTAL_INCOME = "SELECT SUM(income_amount) as total_income FROM income WHERE user_id= ?";
+		public static final String QUERY_TOTAL_EXPENSE = "SELECT SUM(expense_amount) as total_expense FROM expense WHERE user_id= ?";
 		// End: SQl Queries
 
 		// Start: Parameter names
@@ -99,10 +103,13 @@ public class Stringutils {
 		public static final String PAGE_URL_ADMIN = "/pages/admindashboard.jsp" ;
 		public static final String PAGE_URL_ADMIN_HOME = "/pages/adminhome.jsp" ;
 		public static final String PAGE_URL_PROFILE = "/pages/profilepage.jsp" ;
+		public static final String PAGE_URL_INDEX =  "/index.jsp";
+		public static final String PAGE_URL_USERDASHBOARD =  "/pages/userhomedashboard.jsp";
 		// End: JSP Route
 
 		// Start: Servlet Route Path
 		public static final String SERVLET_URL_ADMIN_HOME = "/adminhome";
+		public static final String SERVLET_URL_USER_DASHBOARD = "/userdashboard";
 		public static final String SERVLET_URL_LOGIN = "/login";
 		public static final String SERVLET_URL_SIGNUP = "/signup";
 		public static final String SERVLET_URL_LOGOUT = "/logout";

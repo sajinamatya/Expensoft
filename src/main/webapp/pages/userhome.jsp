@@ -36,6 +36,7 @@ String contextPath = request.getContextPath();
 						<option value="Food">Food</option>
 						<option value="Entertainment">Entertainment</option>
 						<option value="Healthcare">Health care</option>
+						<option value="other">Other</option>
 					</select><br>
 <label for = "expenseDate"> Expense Date</label><br>
 <input type="date"id="expenseDate" name="expenseDate" required>
@@ -44,19 +45,20 @@ String contextPath = request.getContextPath();
     <input type="submit" name="addExpense" value="Add Expense">
     </form>
 </div>
+
 <div class= "income">
-<form action="<%= contextPath%>/income" method="post">
+<form action="<%=contextPath%>/income" method="post">
 <h1> Income</H1>
 <label for = "incomeAmount"> Income Amount </label> <br>
 <input type="text" id="incomeAmount" name="incomeAmount" required><br>
 <label for = "incomeCategory"> Income Category </label> <br>
 <select id="incomeCategory"	name="incomeCategory" required>
-						<option value="Housing">Salary</option>
-						<option value="Utilities">Rental Income</option>
-						<option value="Transportation">Investment</option>
-						<option value="Food">Freelance Earning</option>
-						<option value="Entertainment">Bank Interest Income </option>
-						<option value="Healthcare">Health care</option>
+						<option value="Salary">Salary</option>
+						<option value="Rental Income">Rental Income</option>
+						<option value="Investment">Investment</option>
+						<option value="Freelance Earning">Freelance Earning</option>
+						<option value="Bank Interest Income">Bank Interest Income </option>
+						<option value="Other">Other</option>
 					</select><br>
 					<label for = "incomeDate"> Income Date</label> <br>
 <input type="date"id="incomeDate" name="incomeDate" required>

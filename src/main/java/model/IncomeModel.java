@@ -14,6 +14,7 @@ public class IncomeModel {
 	 * @param income_category
 	 * @param income_description
 	 */
+	public IncomeModel() {}
 	public IncomeModel(int user_id, float income_amount, LocalDate income_date, String income_category, String income_description) {
 		super();
 		this.user_id = user_id;

@@ -41,6 +41,7 @@ public class DatabaseController  {
 	}
 	
 	/**
+	 * This method register the user and save their details into the database
 	 * @param user object of SignupModel class 
 	 * @return 
 	 */
@@ -81,6 +82,7 @@ public class DatabaseController  {
 	    }
 	}
 	/**
+	 * This method check if the email is already exist or not 
 	 * @param email
 	 * @return
 	 */
@@ -105,6 +107,7 @@ public class DatabaseController  {
 	}
 
 	/**
+	 * This method check if the Phone number exist in the database or not 
 	 * @param number
 	 * @return
 	 */
@@ -131,6 +134,11 @@ public class DatabaseController  {
 	 * @param username
 	 * @return
 	 */
+	/**
+	 * This method check if the username exist in the database or not 
+	 * @param username
+	 * @return
+	 */
 	public Boolean checkUsernameIfExists(String username) {
 		try {
 			PreparedStatement stm = getConnection()
@@ -150,6 +158,7 @@ public class DatabaseController  {
 	    
 	}
 	/**
+	 * This method perform login operation by checking if the user entered username and password matches the database data and redirect them to the system page
 	 * @param loginModel
 	 * @return
 	 */
@@ -203,6 +212,11 @@ public class DatabaseController  {
 	    }
 	}
 	
+	/**
+	 * This method extract user_id of the user from the database 
+	 * @param username
+	 * @return
+	 */
 	public int extractUser_Id(String username) {
 		try{
 			PreparedStatement st = getConnection()
@@ -224,6 +238,11 @@ public class DatabaseController  {
 	    }
 		
 	}
+	/**
+	 *  This method add the expense of the user to the system 
+	 * @param expense  entered by the user 
+	 * @return
+	 */
 	public int userExpense(ExpenseModel expense) {
 		try {
 			
@@ -264,6 +283,65 @@ public class DatabaseController  {
 		
 		
 	}
+	public double getTotalExpenseOfUser(int user_id) {
+		 
+		try { 
+			PreparedStatement st1 = getConnection().prepareStatement(Stringutils.QUERY_TOTAL_EXPENSE);
+			st1.setInt(1, user_id);
+			ResultSet result = st1.executeQuery();
+			      
+			if(result.next()) 
+			{
+				
+				double totalexpense = result.getDouble("total_expense");
+				
+				return totalexpense;
+			}
+			else {
+				return 1;
+			}
+		}
+		catch (ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        // Internal error
+	        return 0;
+	    }	
+	}
+	
+	public double getTotalIncomeOfUser(int user_id) {
+		 
+		try { 
+			PreparedStatement st2 = getConnection().prepareStatement(Stringutils.QUERY_TOTAL_INCOME);
+			st2.setInt(1, user_id);
+			ResultSet result = st2.executeQuery();
+			      
+			if(result.next()) 
+			{
+				
+				double totalincome = result.getDouble("total_income");
+				
+				return totalincome;
+			}
+			else {
+				return 1;
+			}
+		}
+		catch (ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        // Internal error
+	        return 0;
+	    }	
+	}
+	
+	
+	
+	/**
+	 * This method adds the income of the user to the system
+	 * @param income  given by the user 
+	 * @return
+	 */
 	public int userIncome(IncomeModel income) {
 		try {
 			
@@ -303,6 +381,12 @@ public class DatabaseController  {
 	}
 	
 	
+	/**
+	 * This method updates the user detail of the user by performing update query
+	 * @param user
+	 * @param user_id
+	 * @return integer
+	 */
 	public int updateUserProfile(UserModel user, int user_id) {
 		
 		try {
@@ -334,6 +418,13 @@ public class DatabaseController  {
 		
 	}
 		
+	/**
+	 * This method update the password of the user
+	 * @param newpass   new password enter by user 
+	 * @param oldpass    old password enter by user 
+	 * @param username   username of user 
+	 * @return
+	 */
 	public int changePassword( String newpass, String oldpass, String username ) {
 		
 		try{
@@ -381,11 +472,66 @@ public class DatabaseController  {
 	    }	
 	}
 	
+	public ArrayList<IncomeModel> getAllIncomeUserInfo(int user_id) {
+		try {
+			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_GET_ALL_INCOME);
+			stmt.setInt(1, user_id);
+			ResultSet result = stmt.executeQuery();
+
+			ArrayList<IncomeModel> IncomeArraylist = new ArrayList<IncomeModel>();
+
+			while (result.next()) {
+				IncomeModel Income = new IncomeModel();
+				
+				Income.setIncome_amount(result.getFloat("Income_amount"));
+				Income.setIncome_category(result.getString("Income_category"));
+				Income.setIncome_description(result.getString("Income_description"));
+				Income.setIncome_date(result.getDate("Income_date").toLocalDate());
+				IncomeArraylist.add(Income);
+			}
+			
+		    return IncomeArraylist;
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			return null;
+		}
 		
+	}	
+	
+	
+	
+	public ArrayList<ExpenseModel> getAllExpenseUserInfo(int user_id) {
+		try {
+			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_GET_ALL_EXPENSE);
+			stmt.setInt(1, user_id);
+			ResultSet result = stmt.executeQuery();
+
+			ArrayList<ExpenseModel> ExpenseArraylist = new ArrayList<ExpenseModel>();
+
+			while (result.next()) {
+				ExpenseModel expense = new ExpenseModel();
+				expense.setExpense_amount(result.getFloat("expense_amount"));
+				expense.setExpense_category(result.getString("expense_category"));
+				expense.setExpense_description(result.getString("expense_description"));
+				expense.setExpense_date(result.getDate("expense_date").toLocalDate());
+				ExpenseArraylist.add(expense);
+			}
+			
+		    return ExpenseArraylist;
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}	
 		
 		
 	
 	
+	/**
+	 * This method retreives details of all the user from the database  of the system and stores into ArrayList 
+	 * @return ArrayList which contain detail of every user in the system
+	 */
 	public ArrayList<UserModel> getAllUserInfo() {
 		try {
 			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_GET_ALL_USER);
@@ -413,6 +559,13 @@ public class DatabaseController  {
 		
 	}
 	
+	/**
+	 * This method retrieves the user detail from the database and create a session and update the details to it if the login is sucessful
+	 * @param username
+	 * @param request
+	 * @param response
+	 * @throws SQLException  ClassNotFoundException 
+	 */
 	public void setUserdetailToSession(String username,HttpServletRequest request, HttpServletResponse response) {
 		try {
 			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_USER_CHECK);
@@ -479,6 +632,11 @@ public class DatabaseController  {
 	
 	
 
+	/**
+	 * This method perfrom deletion of the user account when called 
+	 * @param username of the user
+	 * @return integer 
+	 */
 	public int deleteUserInfo(String username) {
 		try (Connection con = getConnection()) {
 	       
