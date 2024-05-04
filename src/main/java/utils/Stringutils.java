@@ -24,6 +24,7 @@ public class Stringutils {
 				+ "VALUES (?, ?, ?, ?, ?)";
 		
 		public static final String QUERY_USER_CHECK = "SELECT * FROM user WHERE user_name = ?";
+		public static final String QUERY_USER_CHECKPASSWORD = "SELECT username,password FROM user WHERE user_name = ?";
 		public static final String QUERY_GET_ALL_USER = "SELECT * FROM user where user_name  != 'admin'";
 		public static final String QUERY_CHECK_EMAIL = " SELECT email FROM user WHERE email = ?";
 		public static final String QUERY_CHECK_PHONENUMBER = " SELECT phone_number FROM user WHERE phone_number = ?";
@@ -33,7 +34,8 @@ public class Stringutils {
 		public static final String QUERY_DELETE_USER_EXPENSES = "DELETE FROM expense WHERE user_id = (SELECT user_id FROM user WHERE user_name = ?)";
 		public static final String QUERY_DELETE_USER_INCOMES = "DELETE FROM income WHERE user_id = (SELECT user_id FROM user WHERE user_name = ?)";
 		public static final String QUERY_UPDATE_USER_PROFILE = "UPDATE user SET full_name = ?, email = ?, phone_number = ?, address = ?, user_name = ? WHERE user_id = ?";
-
+		public static final String QUERY_USER_PASSWORD_CHECK = "SELECT user_id,password FROM user WHERE user_id = ? AND password = ?";
+		public static final String QUERY_USER_PASSWORD_UPDATE = "UPDATE user SET password = ? WHERE user_name = ?";
 		// End: SQl Queries
 
 		// Start: Parameter names
@@ -46,6 +48,7 @@ public class Stringutils {
 		public static final String EMAIL = "email";
 		public static final String PHONE_NUMBER = "phoneNumber";
 		public static final String PASSWORD = "password";
+		public static final String NEW_PASSWORD = "newpassword";
 		public static final String RETYPE_PASSWORD = "retypePassword";
 		public static final String USER_NAME = "user_name";
 		public static final String  USER_ID = "user_id";
@@ -71,18 +74,19 @@ public class Stringutils {
 		public static final String MESSAGE_ERROR_PHONE_NUMBER = "Phone number is already registered.";
 		public static final String MESSAGE_ERROR_PASSWORD_UNMATCHED = "Password is not matched.";
 		public static final String MESSAGE_ERROR_INCORRECT_DATA = "Please correct all the fields.";
-	
+		public static final String MESSAGE_ERROR_PASSWORD= "Password didn't matched ";
 
 		// Login Page Messages
 		public static final String MESSAGE_SUCCESS_LOGIN = "Successfully LoggedIn!";
+		public static final String MESSAGE_SUCCESS_PASSWORD = "Successfully Changed Password!";
 		public static final String MESSAGE_ERROR_LOGIN = "Either username or password is not correct!";
 		public static final String MESSAGE_ERROR_CREATE_ACCOUNT = "Account for this username is not registered! Please create a new account.";
-
+		public static final String MESSAGE_SUCCESS_PROFILE = "Sucessfully Updated Profile!";
 		// Other Messages
 		public static final String MESSAGE_ERROR_SERVER = "An unexpected server error occurred.";
 		public static final String MESSAGE_SUCCESS_DELETE = "Successfully Deleted!";
 		public static final String MESSAGE_ERROR_DELETE = "Cannot delete the user!";
-
+		public static final String MESSAGE_ERROR_PROFILE = "Fail to update your profile";
 		public static final String MESSAGE_SUCCESS = "successMessage";
 		public static final String MESSAGE_ERROR = "errorMessage";
 		// End: Validation Messages

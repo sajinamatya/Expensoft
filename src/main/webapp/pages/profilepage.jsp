@@ -12,6 +12,10 @@ String contextPath = request.getContextPath();
  String userSessionaddress = (String) session.getAttribute("address");
  String userSessionimage = (String) session.getAttribute("image");
 
+ String errMsg = (String) request.getAttribute(Stringutils.MESSAGE_ERROR);
+ String successMsg = (String) request.getAttribute(Stringutils.MESSAGE_SUCCESS);
+ String successParam = request.getParameter(Stringutils.SUCCESS);
+
  %>
 <%@page import="utils.Stringutils"%>
 <!DOCTYPE html>
@@ -33,26 +37,59 @@ String contextPath = request.getContextPath();
 			<img src="<%= contextPath%>/resources/images/User/<%=userSessionimage %>" 
 							class="image" alt="..." height = 200 width = 200><br>
 	
-			<label for="email">Email :</label><br>
+			<label for="email">Email </label><br>
 			<input type="text" id="email" name ='email' value="<%=userSessionemail %>" ><br>
 			
-		<label for="phone">Phone Number :</label><br>
+		<label for="phone">Phone Number </label><br>
 			<input type="text" id="phone" name ='phoneNumber' value="<%=userSessionphone%>"  ><br>
-		<label for="fullname">Full Name :</label>	<br>
+		<label for="fullname">Full Name </label>	<br>
 		<input type="text" id="fullName" name ="fullName" value="<%=userSessionfullname%>"  ><br>
-		<label for="userName">User Name :</label>	<br>
+		<label for="userName">User Name </label>	<br>
  
 			<input type="text" id="name" name = 'userName' value ="<%=userSessionsname %>" ><br>
-			<label for="userName">Gender : <%=userSessiongender %> </label>	<br>
+			<label for="userName">Gender  <%=userSessiongender %> </label>	<br>
 			
-			<label for="address">Address:</label>	<br>
+			<label for="address">Address</label>	<br>
 			<input type="text" id="address" name = 'address' value ="<%=userSessionaddress%>"><br>
-			<label for="address">New password :</label>	<br>
-			<input type="password" id="password" name = 'password'  ><br>
-			<input type="submit" name="" value="save changes">
-	
+			
+			<input type="submit" name="save" value="save changes"><br>
+			<%
+		if (errMsg != null) {
+			// print
+		%>
+		<h3 class="error">
+			<%
+			out.println(errMsg);
+			%>
+		</h3>
+		<%
+		}
+
+		if (successMsg != null) {
+		// print
+		%>
+		<h3 class="success">
+			<%
+			out.println(successMsg);
+			%>
+		</h3>
+		<%
+		}
+		%>
 	
 	</form>
+	<form action="<%=contextPath%>/profile" method="POST"  >
+	<h1 style="margin-left:70px;"> Change your Password</h1>
+	<label for="address"> old password </label>	<br>
+			<input type="password" id="password" name = 'password'  ><br>
+	
+	 <label for="address">New password </label>	<br>
+			<input type="password" id="password" name = 'newpassword'  ><br>
+			
+			<input type="submit" name="updatepassword" value="update Password">
+			</form>
+		
+	
 	</div>
 
 </html>

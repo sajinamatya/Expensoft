@@ -332,13 +332,58 @@ public class DatabaseController  {
 			return -1;
 		}
 		
+	}
 		
+	public int changePassword( String newpass, String oldpass, String username ) {
 		
+		try{
+			PreparedStatement st = getConnection()
+        		.prepareStatement(Stringutils.QUERY_USER_CHECK);
+			st.setString(1, username);
+			
+			ResultSet result = st.executeQuery();
+			
+			if(result.next()) {
+				
+				String encryptedPwd = result.getString(Stringutils.PASSWORD);
+	            String decryptedPwd = PasswordEncryptionWithAes.decrypt(encryptedPwd, username);
+	            if(decryptedPwd.equals(oldpass)) {
+	            	PreparedStatement st1 = getConnection()
+	            			.prepareStatement(Stringutils.QUERY_USER_PASSWORD_UPDATE);
+	            	st1.setString(1, PasswordEncryptionWithAes.encrypt(
+	            			username, newpass));
+	            	st1.setString(2, username);
+	            	int result1 = st1.executeUpdate();
+				 
+			     // Check if the update was successful (i.e., at least one row affected)
+			        	if (result1 > 0) {
+			            return 1; // user passsword  updated   successful
+			        	} 
+			        	else {
+			        		return 0; // user updating password    process  failed (no rows affected)
+			        	}
+				
+				}
+				else 
+				{ 
+			
+					return -1; // password didn't match 
+					}
 		
-
-		
-		
+			}
+			else 
+			{return 2;}
 		}
+		catch(ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        	ex.printStackTrace();
+	        	return -2; // Internal error
+	    }	
+	}
+	
+		
+		
+		
 	
 	
 	public ArrayList<UserModel> getAllUserInfo() {

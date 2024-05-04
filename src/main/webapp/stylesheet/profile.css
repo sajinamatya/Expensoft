@@ -5,7 +5,7 @@ body{
 
 .profile-main{
 	width: 50%;
-	height:180vh;
+	height:220vh;
 	background-color:#759A9B;
 	margin: 20px auto;
 	
@@ -55,4 +55,12 @@ label{
 	font-size: 17px;
 	font-family: monospace;
 	margin:0px 0px 0px 80px;
+}
+.error{
+	color: rgb(255, 0, 0);
+}
+
+.success{
+	margin-left : 80px;
+	color: #449A44;
 }
