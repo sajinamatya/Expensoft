@@ -45,6 +45,8 @@ public class Stringutils {
 		public static final String QUERY_TOTAL_USER = " SELECT count(*) as totaluser FROM user WHERE user_name<>'admin'";
 		public static final String QUERY_TOTAL_EXPENSE_ENTRY = "SELECT count(*) as totalnoexpense from expense ";
 		public static final String QUERY_TOTAL_INCOME_ENTRY = "SELECT count(*) as totalnoincome from income ";
+		public static final String QUERY_USER_MOST_EXPENSE = "SELECT us.user_id, us.user_name, SUM(expense_amount) AS highest_expense FROM user us JOIN expense ex ON us.user_id = ex.user_id GROUP BY us.user_id, us.user_name ORDER BY highest_expense DESC LIMIT 1;";
+		public static final String QUERY_USER_MOST_INCOME = "SELECT us.user_id, us.user_name, SUM(income_amount) AS highest_income FROM user us JOIN income ex ON us.user_id = ex.user_id GROUP BY us.user_id, us.user_name ORDER BY highest_income DESC LIMIT 1;";
 		// End: SQl Queries
 
 		// Start: Parameter names

@@ -14,21 +14,24 @@
     <header class="header">
        
         <ul class="main-nav">
-            <li><a href="#"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/home_icon.svg" width = 30 height= 30></a></li>
             
-            <li>
+            
+           
             <% 
             if (currentUser.equals("admin")) {
-%>
-    <a href="<%= contextPath + Stringutils.SERVLET_URL_ADMIN_DASHBOARD %>">
+%> 
+	 <li><a href="<%= contextPath + Stringutils.SERVLET_URL_ADMIN_HOME %>"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/home_icon.svg" width = 30 height= 30></a></li>
+   <li> <a href="<%= contextPath + Stringutils.SERVLET_URL_ADMIN_DASHBOARD %>"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/dashboard.svg" width = 30 height= 30></a></li>
 <%
 } else {
 %>
-    <a href="<%= contextPath + Stringutils.SERVLET_URL_USER_DASHBOARD %>">
+     <li><a href="<%= contextPath + Stringutils.PAGE_URL_USER_HOME %>"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/home_icon.svg" width = 30 height= 30></a></li>
+   <li> <a href="<%= contextPath + Stringutils.SERVLET_URL_USER_DASHBOARD %>"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/dashboard.svg" width = 30 height= 30></a></li>
+     <li class="profile"><a href="<%= contextPath + Stringutils.PAGE_URL_PROFILE %>"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/profile.svg" width = 30 height= 30></a></li>
 <%
 }
-%><img alt="" src="<%=contextPath %>/resources/images/Userinterface/dashboard.svg" width = 30 height= 30></a></li>
-            <li class="profile"><a href="<%= contextPath + Stringutils.PAGE_URL_PROFILE %>"><img alt="" src="<%=contextPath %>/resources/images/Userinterface/profile.svg" width = 30 height= 30></a></li>
+%>
+           
            
             <li>
                 <form action="<%

@@ -24,7 +24,7 @@ String contextPath = request.getContextPath();
 <h1 style='Text-align:center;'>Hey <%=userSessions %>. Let's track your expense and income</h1>
 <div class="main">
 <div class="expense">
-<form action="<%= contextPath%>/expense" method="post" >
+<form action="<%= contextPath%>/expense" method="post" onsubmit="alert('Expense added')">
 <h1>Expense</h1>
 <label for = "expenseAmount"> Expense Amount </label> <br>
 <input type="text" id="expenseAmount" name="expenseAmount" required><br>
@@ -47,8 +47,8 @@ String contextPath = request.getContextPath();
 </div>
 
 <div class= "income">
-<form action="<%=contextPath%>/income" method="post">
-<h1> Income</H1>
+<form action="<%=contextPath%>/income" method="post" onsubmit="alert('Income added')">
+<h1> Income</h1>
 <label for = "incomeAmount"> Income Amount </label> <br>
 <input type="text" id="incomeAmount" name="incomeAmount" required><br>
 <label for = "incomeCategory"> Income Category </label> <br>
@@ -64,7 +64,7 @@ String contextPath = request.getContextPath();
 <input type="date"id="incomeDate" name="incomeDate" required>
 <label for="subject">Income Description</label><br>
     <textarea id="subject" name="incomeDesc" placeholder="Income" required></textarea>
-    <input type="submit" name="addIncome" value="Add Income">
+    <input type="submit" name="addIncome" value="Add Income" >
     </form>
 </div>
 

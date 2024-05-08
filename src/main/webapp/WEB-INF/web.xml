@@ -3,7 +3,7 @@
   <display-name>Expensoft</display-name>
   
   <welcome-file-list>
-		<welcome-file>login.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<filter>

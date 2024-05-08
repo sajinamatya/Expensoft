@@ -36,7 +36,7 @@ public class userdashboard extends HttpServlet {
 		request.setAttribute("expenseList", expense);
 		
 		ArrayList<IncomeModel> income = controller.getAllIncomeUserInfo(userId);
-		request.setAttribute("incomeList", income);
+		request.setAttribute("incomeList", income); 
 		
 		double totalincome = controller.getTotalIncomeOfUser(userId);
 		request.setAttribute("totalincome", totalincome);

@@ -53,6 +53,9 @@ public class AuthenticationFilter implements Filter {
 	    boolean isAdminHomeServlet = uri.endsWith(Stringutils.SERVLET_URL_ADMIN_HOME);
 	    boolean isAdminHome = uri.endsWith(Stringutils.PAGE_URL_ADMIN_HOME);
 	    
+	    boolean isAdminDashboard= uri.endsWith(Stringutils.PAGE_URL_ADMIN);
+	    boolean isAdminDashboardServlet =  uri.endsWith(Stringutils.SERVLET_URL_ADMIN_DASHBOARD);
+	    
 	    boolean isProfile = uri.endsWith(Stringutils.PAGE_URL_PROFILE);
 	    boolean isProfileServlet = uri.endsWith(Stringutils.SERVLET_URL_PROFILE);
 	    
@@ -64,14 +67,19 @@ public class AuthenticationFilter implements Filter {
 	    boolean isUserHome = uri.endsWith(Stringutils.PAGE_URL_USER_HOME);
 	    // Check if a session exists and if the username attribute is set to determine login status
 	    HttpSession session = req.getSession(false); // Don't create a new session if one doesn't exist
-	    boolean isLoggedIn = session != null && session.getAttribute(Stringutils.USERNAME) != null;
+	    boolean isLoggedIn = session != null && session.getAttribute(Stringutils.USERNAME) != null  ;
+	    boolean isLoggedAdminIn =  session.getAttribute(Stringutils.USERNAME).equals("admin")   ;
 
 	    // Redirect to login if user is not logged in and trying to access a protected resource
-	    if (!isLoggedIn && (isAdminHomeServlet || isAdminHome  || isSignupervlet)) {
+	    if (!isLoggedIn && (isAdminHomeServlet || isAdminHome|| isUserHome  || isSignupervlet ||isLoginServlet ||isLogoutServlet ||isProfile||isProfileServlet||isExpenseServlet||isIncomeServlet ||isModifyUserServlet||isAdminDashboard||isAdminDashboardServlet)) {
 	        res.sendRedirect(req.getContextPath() + Stringutils.PAGE_URL_LOGIN);
-	    } else if (isLoggedIn && !isUserHome && !(!isLogin || isLogoutServlet)) { // Redirect logged-in users to the index page if trying to access login page again
-	        res.sendRedirect(req.getContextPath() + Stringutils.PAGE_URL_INDEX);
-	    } else {
+//	    } else if (isLoggedIn && !isUserHome && !(!isLogin || isLogoutServlet)) { // Redirect logged-in users to the index page if trying to access login page again
+//	        res.sendRedirect(req.getContextPath() + Stringutils.PAGE_URL_INDEX);
+	    } else if (isLoggedIn && !isLoggedAdminIn && (isAdminHomeServlet || isAdminHome || isAdminDashboardServlet|| isAdminDashboard)) {
+	    	res.sendRedirect(req.getContextPath() + Stringutils.PAGE_URL_USER_HOME);
+	    }
+	    
+	    else {
 	        // Allow access to the requested resource if user is logged in or accessing unprotected resources
 	        chain.doFilter(request, response);
 	    }

@@ -2,7 +2,7 @@
 
 table td, table th {
   border: 1px solid #ddd;
-  padding: 22px;
+  padding: 30px;
   font-family :monospace;
  
 }
@@ -13,9 +13,8 @@ h1{
 }
 table{
 	margin:20px 0px 0px 80px;
-	width: 80%;
-	border-collapse:collapse; True;
-}
+	width: 90%;
+	border-collapse:collapse; }
 
 table tr:nth-child(even){background-color: #f2f2f2;}
 

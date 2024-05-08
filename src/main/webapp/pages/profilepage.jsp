@@ -80,8 +80,7 @@ String contextPath = request.getContextPath();
 	</form>
 	<form action="<%=contextPath%>/profile" method="POST"  >
 	<h1 style="margin-left:70px;"> Change your Password</h1>
-	<label for="address"> old password </label>	<br>
-			<input type="password" id="password" name = 'password'  ><br>
+	<label for="address"> old password </label>	<br>			<input type="password" id="password" name = 'password'  ><br>
 	
 	 <label for="address">New password </label>	<br>
 			<input type="password" id="password" name = 'newpassword'  ><br>
@@ -91,8 +90,13 @@ String contextPath = request.getContextPath();
 		
 	<h1 style="margin-left:70px;"> Delete your account</h1>
 	
-	
-		<input type="submit" name="updatepassword" value="Delete Account " style= "background-color:red;">
+	<form id = "deleteuser" action = "<%=contextPath%>/profile">
+		<input type="submit" name="<%=Stringutils.DELETE_ID %>" value="Delete Account " style= "background-color:red;" onclick = "return confirm('Are you sure you want to commit delete and go back?')">
+		</form>
 	</div>
-
+<script>
+        function delete() {
+           if  confirm('Are you sure you want to delete your account'){ document.getElementById("deleteuser").submit();}
+        }
+    </script>
 </html>

@@ -1,0 +1,67 @@
+@charset "ISO-8859-1";
+ body{ background-color:#98a2a5;
+margin: 0;}
+.main h1 {
+	margin :50px;
+	font-size: 70px;
+	font-family : monospace;
+	color : #075AFE;
+}
+.main h2 {
+	margin :50px;
+	font-family : monospace;
+	color : #075AFE;
+	
+}
+.main{
+margin: 0;
+background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  background-position:left bottom;
+  background-image:url(../resources/images/Userinterface/back.jpg);
+background-attachment: fixed;
+
+  height: 150vh;
+  opacity: 0.9;
+  
+}
+.submain{
+	display:flex;
+	justify-content: space-between;
+}
+.text-2 {}
+.text-2 button {
+    border:0;
+  background-color: #35b0ca;
+  font-family:monospace bold;
+  display: block;
+  font-size: 17px;
+  margin: 20px 0 0  140px;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  padding: 12px 40px;
+  outline: none;
+  color: rgb(0, 0, 0);
+  border-radius: 20px;
+  transition: 0.25s;
+  cursor: pointer;
+  width:160px;
+  
+ 
+}
+.text-2 a {
+	margin-right: 10px;
+	 text-decoration:none;
+}
+.text-2 button:hover {
+    background-color: #5D7986;
+}
+.text-2 p {
+	margin :50px;
+	font-family : monospace;
+	color : #075AFE;
+	font-size: 25px;
+	font-weight: 800;
+	margin: 160px 20px 0px  0px;
+}

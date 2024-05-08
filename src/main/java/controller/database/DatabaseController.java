@@ -182,17 +182,17 @@ public class DatabaseController  {
 	        // Check if there's a record returned from the query
 	        if (result.next()) {
 	            // Get the username from the database
-	            String userDb = result.getString(Stringutils.USER_NAME);
+	            String user= result.getString(Stringutils.USER_NAME);
 
 	            // Get the password from the database
 	            String encryptedPwd = result.getString(Stringutils.PASSWORD);
 
-	            String decryptedPwd = PasswordEncryptionWithAes.decrypt(encryptedPwd, userDb);
+	            String decryptedPwd = PasswordEncryptionWithAes.decrypt(encryptedPwd, user);
 	            // Check if the username and password match the credentials from the database
-	            if(userDb.equals("admin") && decryptedPwd.equals("admin")) {
+	            if(user.equals("admin") && decryptedPwd.equals("admin")) {
 	            	return 3; 
 	            }
-	            else if (userDb.equals(loginModel.getUsername()) 
+	            else if (user.equals(loginModel.getUsername()) 
 	            		&& decryptedPwd.equals(loginModel.getPassword())) {
 	                // Login successful, return 1
 	                return 1;
@@ -708,7 +708,7 @@ public class DatabaseController  {
 				session.setAttribute("fullname", fullname);
 				session.setAttribute("image", imageurl);
 				session.setAttribute("date",date);
-				session.setMaxInactiveInterval(30*60);
+				session.setMaxInactiveInterval(15*60);
 				
 				Cookie userCookie= new Cookie(Stringutils.USER, user_name);
 				Cookie userCookieId = new Cookie("user_id",user_id);
@@ -716,7 +716,7 @@ public class DatabaseController  {
 				Cookie userCookiePhone = new Cookie("phonenumber",phone);
 				Cookie userCookieGender = new Cookie("gender",gender);
 				Cookie userCookieDate = new Cookie("date",date.toString());
-				userCookie.setMaxAge(30*60);
+				userCookie.setMaxAge(15*60);
 				response.addCookie(userCookie);
 				response.addCookie(userCookieId);
 				response.addCookie(userCookieEmail);
@@ -734,11 +734,119 @@ public class DatabaseController  {
 		
 	} 
 	
+	/**
+	 * This method Perform the sql query to get total number of expense entry add by all the user  from the database 
+	 * @return total number of user 
+	 */
+	public int getTotalNoExpenseOfALLUser() {
+		 
+		try { 
+			PreparedStatement st2 = getConnection().prepareStatement(Stringutils.QUERY_TOTAL_EXPENSE_ENTRY);
+		
+			ResultSet result = st2.executeQuery();
+			      
+			if(result.next()) 
+			{
+				
+				int totalexpenseentry = result.getInt("totalnoexpense");
+				
+				return totalexpenseentry;
+			}
+			else {
+				return 1;
+			}
+		}
+		catch (ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        // Internal error
+	        return 0;
+	    }	
+	}
+	/**
+	 * This method Perform the sql query to get total number of income entry add by all the user  from the database 
+	 * @return total income entry  
+	 */
+	public int getTotalNoIncomeOfALLUser() {
+		 
+		try { 
+			PreparedStatement st2 = getConnection().prepareStatement(Stringutils.QUERY_TOTAL_INCOME_ENTRY);
+		
+			ResultSet result = st2.executeQuery();
+			      
+			if(result.next()) 
+			{
+				
+				int totalincomeentry = result.getInt("totalnoincome");
+				
+				return totalincomeentry;
+			}
+			else {
+				return 1;
+			}
+		}
+		catch (ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        // Internal error
+	        return 0;
+	    }	
+	}
 	
-	
-	
-	
-	
+	/**
+	 * This method Perform the sql query to get highest spender by all the user  from the database 
+	 * @return total number of user 
+	 */
+	public Map<String, Float> getHighestExpenseOfALLUser() {
+		Map<String, Float> highestexpense = new HashMap<>();
+		try { 
+			PreparedStatement st2 = getConnection().prepareStatement(Stringutils.QUERY_USER_MOST_EXPENSE);
+		
+			ResultSet result = st2.executeQuery();
+			      
+			if(result.next()) 
+			{
+				String username = result.getString("user_name");
+				Float highexpense = result.getFloat("highest_expense");
+				highestexpense.put(username, highexpense);
+			}
+			
+		}
+		catch (ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        // Internal error
+	        
+	    }	
+		return highestexpense;
+	}
+	/**
+	 * This method Perform the sql query to get highest earner  by all the user  from the database 
+	 * @return total number of user 
+	 */
+	public Map<String, Float> getHighestIncomeOfALLUser() {
+		Map<String, Float> highestincome = new HashMap<>();
+		try { 
+			PreparedStatement st2 = getConnection().prepareStatement(Stringutils.QUERY_USER_MOST_INCOME);
+		
+			ResultSet result = st2.executeQuery();
+			      
+			if(result.next()) 
+			{
+				String username = result.getString("user_name");
+				Float highexpense = result.getFloat("highest_income");
+				highestincome.put(username, highexpense);
+			}
+			
+		}
+		catch (ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        // Internal error
+	        
+	    }	
+		return highestincome;
+	}
 	
 	
 	
@@ -766,8 +874,10 @@ public class DatabaseController  {
 	   
 	        try (PreparedStatement st3 = con.prepareStatement(Stringutils.QUERY_DELETE_USER)) {
 	            st3.setString(1, username);
-	            return st3.executeUpdate();
+	             st3.executeUpdate();
+	             
 	        }
+	        return 1;
 		}catch (SQLException | ClassNotFoundException ex) {
 			ex.printStackTrace(); 
 			return -1;

@@ -27,20 +27,24 @@ String contextPath = request.getContextPath();
 </c:if>
     <table>
         <tr>
-            <th>Gender</th>
             <th>Full Name </th>
+            <th>Gender </th>
             <th>Email</th>
             <th>User name </th>
+            <th>Date Of birth</th>
+            <th>PhoneNumber </th>
             <th>Address </th>
             <th> Action </th>
         </tr>
         <c:if test="${not empty userList}">
 	<c:forEach items="${userList}" var="users">
             <tr>
-                <td>${users.gender}</td>
                 <td>${users.fullName}</td>
+                <td>${users.gender}</td>
                 <td>${users.email}</td>
                 <td>${users.userName}</td>
+                <td>${users.dateOfBirth}</td>
+                 <td>${users.phoneNumber}</td>
                 <td>${users.address}</td>
                 <td>	<form id="deleteForm-${users.userName}" method="post"
 							action="<%=contextPath + Stringutils.SERVLET_URL_MODIFY_USER %>">
@@ -58,7 +62,7 @@ String contextPath = request.getContextPath();
         </c:if>
     </table>
     <div class = "addUser">
-    <form action="<%=contextPath%>/adminadd" method="post" enctype ="multipart/form-data" >
+    <form action="<%=contextPath + Stringutils.SERVLET_URL_ADMIN_ADD%>" method="post" enctype ="multipart/form-data" >
 			<div class="row">
 				<div class="col">
 					<label for="fullName">Full Name :</label> <input type="text"

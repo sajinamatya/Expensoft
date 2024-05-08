@@ -31,7 +31,12 @@ public class AdminHome extends HttpServlet {
 	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 
 	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher(Stringutils.SERVLET_URL_ADMIN_HOME).forward(request, response);
+		
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<UserModel> user = controller.getAllUserInfo();
 		request.setAttribute("userList", user);

@@ -120,7 +120,34 @@ public class ProfilePageServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + Stringutils.PAGE_URL_LOGIN );
 		}
 		}
+		
 			
 		}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String deleteId = request.getParameter(Stringutils.DELETE_ID);
+		if (deleteId != null && !deleteId.isEmpty()) {
+			doDelete(request, response);
+		}
+	}
+	
+	
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("delete triggered");
+		HttpSession userSession = req.getSession(false);
+		
+		   
+		String user_name = (String) userSession.getAttribute(Stringutils.USERNAME);
+		
+		int del = databaseController.deleteUserInfo(user_name);
+		
+		if (del ==1 ) {
+			resp.sendRedirect(req.getContextPath() + Stringutils.PAGE_URL_LOGIN);
+		}
+		else {
+			resp.sendRedirect(req.getContextPath() + Stringutils.PAGE_URL_PROFILE);
+		}
+		
+		
+	}
 
 }

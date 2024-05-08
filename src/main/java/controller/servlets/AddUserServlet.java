@@ -18,6 +18,9 @@ import utils.Stringutils;
 /**
  * Servlet implementation class AddUserServlet
  */
+
+
+
 @WebServlet(asyncSupported = true, urlPatterns = { Stringutils.SERVLET_URL_ADMIN_ADD })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 maxFileSize = 1024 * 1024 * 10, // 10MB
@@ -41,7 +44,7 @@ public class AddUserServlet extends HttpServlet {
 	
 
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	// Extract user added by the admin  detail  from request parameters
     	String fullName = request.getParameter(Stringutils.FULL_NAME);
     	String email = request.getParameter(Stringutils.EMAIL);
@@ -85,7 +88,7 @@ public class AddUserServlet extends HttpServlet {
 
     		if (result == 1) {
     			request.setAttribute(Stringutils.MESSAGE_SUCCESS, Stringutils.MESSAGE_SUCCESS_REGISTER);
-    			request.getRequestDispatcher(Stringutils.SERVLET_URL_ADMIN_HOME).forward(request, response);
+    			response.sendRedirect(request.getContextPath() + Stringutils.SERVLET_URL_ADMIN_HOME);
     	} 	else if (result == 0) {
     			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_SIGNUP);
     			request.getRequestDispatcher(Stringutils.SERVLET_URL_ADMIN_HOME).forward(request, response);
