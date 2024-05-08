@@ -2,6 +2,7 @@ package controller.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +43,12 @@ public class userdashboard extends HttpServlet {
 		
 		double totalexpense = controller.getTotalExpenseOfUser(userId);
 		request.setAttribute("totalexpense", totalexpense);
+		
+		Map<String, Double> ExpenseMap = controller.getCategoryExpenseOfUser(userId);
+		request.setAttribute("expenseCategory",ExpenseMap);
+		
+		Map<String, Double> IncomeMap = controller.getCategoryIncomeOfUser(userId);
+		request.setAttribute("incomeCategory",IncomeMap);
 		
 		
 		

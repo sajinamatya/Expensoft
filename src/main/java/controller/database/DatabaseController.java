@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -270,9 +272,7 @@ public class DatabaseController  {
 			
 		}	
 			
-	
 		// Check if the update was successful (i.e., at least one row affected)
-       
 
      catch (ClassNotFoundException | SQLException ex) {
         // Print the stack trace for debugging purposes
@@ -280,9 +280,79 @@ public class DatabaseController  {
         return -1; // Internal error
     }
 		
-		
-		
 	}
+	
+	
+	
+	/**
+	 * This method perform sql queries for extracting the highest total expense by category. 
+	 * @param user_id
+	 * @return categoryexpense
+	 */
+	public Map<String, Double> getCategoryExpenseOfUser(int user_id) {
+		Map<String, Double> ExpenseMap = new HashMap<>();
+		 
+		try { 
+			PreparedStatement st1 = getConnection().prepareStatement(Stringutils.QUERY_EXPENSE_CATEGORY);
+			st1.setInt(1, user_id);
+			ResultSet result = st1.executeQuery();
+			      
+			while(result.next()) 
+			{
+				String expensecategory = result.getString("expense_category");
+				double categoryexpense = result.getDouble("total_expense");
+				ExpenseMap.put(expensecategory, categoryexpense);
+				
+			}
+			
+		}
+		catch (ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        // Internal error
+
+	    }	
+		return ExpenseMap;
+	}
+	
+	/**
+	 * This method perform sql queries for extracting the highest total income by category. 
+	 * @param user_id
+	 * @return
+	 */
+	public Map<String, Double> getCategoryIncomeOfUser(int user_id) {
+		Map<String, Double> IncomeMap = new HashMap<>();
+		 
+		try { 
+			PreparedStatement st1 = getConnection().prepareStatement(Stringutils.QUERY__INCOME_CATEGORY);
+			st1.setInt(1, user_id);
+			ResultSet result = st1.executeQuery();
+			      
+			while(result.next()) 
+			{
+				String incomecategory = result.getString("income_category");
+				double incomeam = result.getDouble("total_income");
+				IncomeMap.put(incomecategory,incomeam);
+				
+			}
+			
+		}
+		catch (ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        // Internal error
+
+	    }	
+		return IncomeMap;
+	}
+	
+	
+	
+	/**
+	 * This method return the sum of total expense of the user 
+	 * @param user_id
+	 * @return totalexpense
+	 */
 	public double getTotalExpenseOfUser(int user_id) {
 		 
 		try { 
@@ -309,6 +379,11 @@ public class DatabaseController  {
 	    }	
 	}
 	
+	/**
+	 *  This method is used to extract the total income of the user 
+	 * @param user_id
+	 * @return
+	 */
 	public double getTotalIncomeOfUser(int user_id) {
 		 
 		try { 
@@ -334,6 +409,37 @@ public class DatabaseController  {
 	        return 0;
 	    }	
 	}
+	/**
+	 * This method Peform the sql query to get total number of user from the database 
+	 * @return total number of user 
+	 */
+	public int getTotalNoOfUser() {
+		 
+		try { 
+			PreparedStatement st2 = getConnection().prepareStatement(Stringutils.QUERY_TOTAL_USER);
+		
+			ResultSet result = st2.executeQuery();
+			      
+			if(result.next()) 
+			{
+				
+				int totaluser = result.getInt("totaluser");
+				
+				return totaluser;
+			}
+			else {
+				return 1;
+			}
+		}
+		catch (ClassNotFoundException | SQLException ex) {
+	        // Print the stack trace for debugging purposes
+	        ex.printStackTrace();
+	        // Internal error
+	        return 0;
+	    }	
+	}
+	
+	
 	
 	
 	
@@ -472,6 +578,11 @@ public class DatabaseController  {
 	    }	
 	}
 	
+	/**
+	 * This method gets all the user income details and stores it to the arraylist 
+	 * @param user_id
+	 * @return ArrayList<IncomeModel> 
+	 */
 	public ArrayList<IncomeModel> getAllIncomeUserInfo(int user_id) {
 		try {
 			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_GET_ALL_INCOME);
@@ -500,6 +611,10 @@ public class DatabaseController  {
 	
 	
 	
+	/** This method extract all the user expense details and stories it in the arraylist 
+	 * @param user_id
+	 * @return
+	 */
 	public ArrayList<ExpenseModel> getAllExpenseUserInfo(int user_id) {
 		try {
 			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_GET_ALL_EXPENSE);
@@ -572,9 +687,6 @@ public class DatabaseController  {
 			stmt.setString(1,username);
 			ResultSet result = stmt.executeQuery();
 			
-			
-			
-
 			while (result.next()) {
 				String user_id = String.valueOf(result.getInt("user_id"));
 				String fullname = result.getString("full_name");

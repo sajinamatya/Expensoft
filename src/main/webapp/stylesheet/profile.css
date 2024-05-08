@@ -45,7 +45,7 @@ input:focus,select:focus{
   border-radius: 50px;
   transition: 0.25s;
   cursor: pointer;
-  width:30%;
+  width:40%;
 }
 .profile-main input[type = "submit"]:hover{
   background: #5D7986;

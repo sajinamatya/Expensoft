@@ -4,6 +4,7 @@ table td, table th {
   border: 1px solid #ddd;
   padding: 22px;
   font-family :monospace;
+ 
 }
 
 h1{
@@ -13,6 +14,7 @@ h1{
 table{
 	margin:20px 0px 0px 80px;
 	width: 80%;
+	border-collapse:collapse; True;
 }
 
 table tr:nth-child(even){background-color: #f2f2f2;}
@@ -23,11 +25,75 @@ table th {
   padding:12px;
   text-align: left;
   background-color: #35b0ca;
-  color: white;
+  color: black;
 }
 button{
 	border-radius:50px;border: none;background: none;
 }
 button:hover{
 	background-color:#FF7F7F ;
+}
+
+.addUser{
+	width : 80%;
+	height: 70vh;
+	background-color:rgb(138, 173, 255);
+	margin: 170px 0 30px 100px;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.col {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.col:last-child {
+    margin-right: 0;
+}
+
+label {
+	margin-left:30px;
+	font-size: 17px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,select {
+	margin-left:30px;
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+input:focus,select:focus{
+	 background-color:#5995a6;
+}
+
+
+.addUser input[type="submit"] {
+    border:0;
+  background-color: #35b0ca;
+  font-family:monospace bold;
+  display: block;
+  font-size: 17px;
+  margin: 30px 1px;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  padding: 12px 40px;
+  outline: none;
+  color: rgb(0, 0, 0);
+  border-radius: 20px;
+  transition: 0.25s;
+  cursor: pointer;
+  width:160px;
+}
+
+.addUser input[type="submit"]:hover {
+    background-color: #5D7986;
 }

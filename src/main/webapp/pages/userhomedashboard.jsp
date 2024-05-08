@@ -7,7 +7,7 @@
 String contextPath = request.getContextPath();
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="utils.Stringutils"%>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +24,12 @@ String contextPath = request.getContextPath();
 <div class="user-dashboard">
     <div class="user-item"><h3>Total Income : <%= request.getAttribute("totalincome") %> </h3> </div>
     <div class="user-item"> <h3>Total Expense : <%= request.getAttribute("totalexpense") %></h3> </div>
-    <div class="user-item"><h3>Category with most income :Business Income</h3></div>
-    <div class="user-item"><h3>User with highest expense amount : Ram </h3></div>
-    <div class="user-item"><h3>User with highest income amount : Harry</h3> </div>
-    <div class="user-item"><h3>User with lowest expense : Alex</h3></div>
+    <div class="user-item"><h3>Category most expense :</h3> <c:forEach var="entry" items="${expenseCategory}">
+            <h3>${entry.key}: ${entry.value}</h3>
+        </c:forEach></div>
+    <div class="user-item"><h3>Category with most income : </h3> <c:forEach var="entry" items="${incomeCategory}">
+            <h3>${entry.key}: ${entry.value}</h3>
+        </c:forEach></div>
     
 </div>
 <h1>Expense Detail</h1>

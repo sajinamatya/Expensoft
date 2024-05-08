@@ -89,7 +89,10 @@ String contextPath = request.getContextPath();
 			<input type="submit" name="updatepassword" value="update Password">
 			</form>
 		
+	<h1 style="margin-left:70px;"> Delete your account</h1>
 	
+	
+		<input type="submit" name="updatepassword" value="Delete Account " style= "background-color:red;">
 	</div>
 
 </html>

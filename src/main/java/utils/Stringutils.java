@@ -40,6 +40,11 @@ public class Stringutils {
 		public static final String QUERY_USER_PASSWORD_UPDATE = "UPDATE user SET password = ? WHERE user_name = ?";
 		public static final String QUERY_TOTAL_INCOME = "SELECT SUM(income_amount) as total_income FROM income WHERE user_id= ?";
 		public static final String QUERY_TOTAL_EXPENSE = "SELECT SUM(expense_amount) as total_expense FROM expense WHERE user_id= ?";
+		public static final String QUERY_EXPENSE_CATEGORY = "SELECT expense_category, SUM(expense_amount) AS total_expense FROM expense WHERE user_id = ? GROUP BY expense_category ORDER BY total_expense DESC LIMIT 1 ";
+		public static final String QUERY__INCOME_CATEGORY = "SELECT income_category, SUM(income_amount) AS total_income FROM income WHERE user_id = ? GROUP BY income_category ORDER BY total_income DESC LIMIT 1 ";
+		public static final String QUERY_TOTAL_USER = " SELECT count(*) as totaluser FROM user WHERE user_name<>'admin'";
+		public static final String QUERY_TOTAL_EXPENSE_ENTRY = "SELECT count(*) as totalnoexpense from expense ";
+		public static final String QUERY_TOTAL_INCOME_ENTRY = "SELECT count(*) as totalnoincome from income ";
 		// End: SQl Queries
 
 		// Start: Parameter names
@@ -109,7 +114,9 @@ public class Stringutils {
 
 		// Start: Servlet Route Path
 		public static final String SERVLET_URL_ADMIN_HOME = "/adminhome";
+		public static final String SERVLET_URL_ADMIN_ADD = "/adminadd";
 		public static final String SERVLET_URL_USER_DASHBOARD = "/userdashboard";
+		public static final String SERVLET_URL_ADMIN_DASHBOARD = "/admindashboard";
 		public static final String SERVLET_URL_LOGIN = "/login";
 		public static final String SERVLET_URL_SIGNUP = "/signup";
 		public static final String SERVLET_URL_LOGOUT = "/logout";

@@ -43,16 +43,22 @@ p{
         margin-left:200px;
         margin-top : 60px;
         width: 67%;
-        height: 100vh; /* Adjust the height as needed */
+        height: 50vh; /* Adjust the height as needed */
     }
 
-    .user-item {
+.user-item {
         flex: 1  1 calc(33.33% - 10px); /* Adjust the width and margins as needed */
-        margin: 10px;
-        background-color: #f0f0f0;
+        margin: 16px;
+        background-color: #5474AF;
         border: 2px solid #ccc;
         border-radius: 40px;
-        padding: 10px;
-        height: 20vh;
+        padding: 0px 20px 0px 20px ;
+        height: 21vh;
+         
         box-sizing: border-box;
+
     }
+    .user-item h3 {
+    color: black;
+    font-family :monospace;
+         font-weight : 800}
