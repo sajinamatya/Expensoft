@@ -62,7 +62,7 @@ public class UserModel{
 	
 
 	/**
-	 * getter method fro imageurlFromPart 
+	 * getter method from imageurlFromPart 
 	 * @return imageUrlFromPart 
 	 */
 	public String getImageUrlFromPart() {

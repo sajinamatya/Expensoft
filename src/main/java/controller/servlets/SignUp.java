@@ -1,8 +1,6 @@
 package controller.servlets;
-
 import java.io.IOException;
 import java.time.LocalDate;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -10,11 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-
 import controller.database.DatabaseController;
-
 import model.UserModel;
 import utils.Stringutils;
+import utils.ValidationUtil;
 
 
 
@@ -56,6 +53,16 @@ public class SignUp extends HttpServlet {
 		Part imagePart = request.getPart("image");	
 		
 		
+		//checking if the user entered input field are valid or not. 
+		if(!ValidationUtil.isTextOnly(fullName) ||
+				!ValidationUtil.isAlphanumeric(username) ||
+				!ValidationUtil.isEmail(email) ||
+				!ValidationUtil.isNumbersOnly(phoneNumber) ||
+				!ValidationUtil.isGenderMatches(gender)) {
+			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_INCORRECT_DATA);
+			request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
+		}
+
 		if(databaseController.checkEmailIfExists(email) == true  ) {
 			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_EMAIL);
 			request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
