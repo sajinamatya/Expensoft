@@ -848,7 +848,34 @@ public class DatabaseController  {
 		return highestincome;
 	}
 	
-	
+	public UserModel getAllUserInfoByUsername(String username ) {
+		try {
+			PreparedStatement stmt = getConnection().prepareStatement(Stringutils.QUERY_USER_BY_ID);
+			stmt.setString(1, username);
+			ResultSet result = stmt.executeQuery();
+
+			UserModel users = null; 
+
+			if (result.next()) {
+				users = new UserModel();
+				users.setFullName(result.getString("full_name"));
+				users.setDateOfBirth(result.getDate("date_of_birth").toLocalDate());
+				users.setEmail(result.getString("email"));
+				users.setGender(result.getString("gender"));
+				users.setPhoneNumber(result.getString("phone_number"));
+				users.setUserName(result.getString("user_name"));	
+				users.setAddress(result.getString("address"));
+				
+			
+			}
+			return users;
+		    
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}
 	
 	
 

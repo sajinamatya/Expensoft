@@ -21,7 +21,7 @@ import utils.Stringutils;
  * Servlet implementation class userdashboard
  */
 @WebServlet(asyncSupported = true, urlPatterns = { Stringutils.SERVLET_URL_USER_DASHBOARD})
-public class userdashboard extends HttpServlet {
+public class UserDashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DatabaseController controller = new DatabaseController();
 

@@ -14,6 +14,8 @@ String contextPath = request.getContextPath();
 <link rel="stylesheet" type="text/css"
 	href="<%=contextPath%>/stylesheet/Header.css" />
 	<link rel="stylesheet" type="text/css"
+	href="<%=contextPath%>/stylesheet/footer.css" />
+	<link rel="stylesheet" type="text/css"
 	href="<%=contextPath%>/stylesheet/userdashboard.css" />
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -81,6 +83,6 @@ String contextPath = request.getContextPath();
         </c:forEach>
         </c:if>
     </table>
-
+ <jsp:include page="<%=Stringutils.PAGE_URL_FOOTER%>" />
 </body>
 </html>

@@ -65,13 +65,14 @@ public class AuthenticationFilter implements Filter {
 	    boolean isSignupPage = uri.endsWith(Stringutils.PAGE_URL_SIGNUP);
 	    boolean isSignupervlet = uri.endsWith(Stringutils.SERVLET_URL_SIGNUP);
 	    boolean isUserHome = uri.endsWith(Stringutils.PAGE_URL_USER_HOME);
+	    boolean isUserDashboard = uri.endsWith(Stringutils.SERVLET_URL_USER_DASHBOARD);
 	    // Check if a session exists and if the username attribute is set to determine login status
 	    HttpSession session = req.getSession(false); // Don't create a new session if one doesn't exist
 	    boolean isLoggedIn = session != null && session.getAttribute(Stringutils.USERNAME) != null  ;
 	    boolean isLoggedAdminIn =  session.getAttribute(Stringutils.USERNAME).equals("admin")   ;
 
 	    // Redirect to login if user is not logged in and trying to access a protected resource
-	    if (!isLoggedIn && (isAdminHomeServlet || isAdminHome|| isUserHome  || isSignupervlet ||isLoginServlet ||isLogoutServlet ||isProfile||isProfileServlet||isExpenseServlet||isIncomeServlet ||isModifyUserServlet||isAdminDashboard||isAdminDashboardServlet)) {
+	    if (!isLoggedIn && (isAdminHomeServlet || isAdminHome|| isUserHome  || isSignupervlet ||isLoginServlet ||isLogoutServlet ||isProfile||isProfileServlet||isExpenseServlet||isIncomeServlet ||isModifyUserServlet||isAdminDashboard||isAdminDashboardServlet||isUserDashboard)) {
 	        res.sendRedirect(req.getContextPath() + Stringutils.PAGE_URL_LOGIN);
 //	    } else if (isLoggedIn && !isUserHome && !(!isLogin || isLogoutServlet)) { // Redirect logged-in users to the index page if trying to access login page again
 //	        res.sendRedirect(req.getContextPath() + Stringutils.PAGE_URL_INDEX);

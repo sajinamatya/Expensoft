@@ -1,22 +1,5 @@
 @charset "ISO-8859-1";
-body{
-	background-color:#98a2a5;
-}
-
-.profile-main{
-	width: 50%;
-	height:270vh;
-	background-color:#759A9B;
-	margin: 20px auto;
-	
-	
-}
-.image{
-	border-radius: 40%;
-	border: 1px solid #ccc;
-	margin:0px 0px 10px 170px;
-}
-.profile-main input,select,textarea {
+ input,select,textarea {
 	font-weight: 600;
 	font-size: 15px;
 	font-family: monospace;
@@ -30,7 +13,7 @@ body{
 input:focus,select:focus{
 	 background-color:#5995a6;
 }
-.profile-main input[type="submit"]{
+ input[type="submit"]{
 	
   background-color: #35b0ca;
   font-family:monospace bold;
@@ -47,7 +30,7 @@ input:focus,select:focus{
   cursor: pointer;
   width:40%;
 }
-.profile-main input[type = "submit"]:hover{
+ input[type = "submit"]:hover{
   background: #5D7986;
 }
 label{
@@ -55,12 +38,4 @@ label{
 	font-size: 17px;
 	font-family: monospace;
 	margin:0px 0px 0px 80px;
-}
-.error{
-	color: rgb(255, 0, 0);
-}
-
-.success{
-	margin-left : 80px;
-	color: #449A44;
 }

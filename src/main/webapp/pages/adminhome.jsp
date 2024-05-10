@@ -14,6 +14,8 @@ String contextPath = request.getContextPath();
 <link rel="stylesheet" type="text/css"
 	href="<%=contextPath%>/stylesheet/Header.css" />
 	<link rel="stylesheet" type="text/css"
+	href="<%=contextPath%>/stylesheet/footer.css" />
+	<link rel="stylesheet" type="text/css"
 	href="<%=contextPath%>/stylesheet/Adminhome.css" />
 <meta charset="ISO-8859-1">
 <title>Admin Home</title>
@@ -46,11 +48,19 @@ String contextPath = request.getContextPath();
                 <td>${users.dateOfBirth}</td>
                  <td>${users.phoneNumber}</td>
                 <td>${users.address}</td>
-                <td>	<form id="deleteForm-${users.userName}" method="post"
+                <td>	
+                <form method="post" action="<%=contextPath + Stringutils.SERVLET_URL_MODIFY_USER%>">
+							<input type="hidden" name="<%=Stringutils.UPDATE_ID %>" value="${users.userName}" />
+							<button type="submit"><img src="<%= contextPath%>/resources/images/Userinterface/edit.svg" 
+							class="image-delete" alt="..." width= 20 height = 20 ></button>
+						</form>
+                
+                
+                
+                <form id="deleteForm-${users.userName}" method="post"
 							action="<%=contextPath + Stringutils.SERVLET_URL_MODIFY_USER %>">
 							<input type="hidden" name="<%=Stringutils.DELETE_ID %>" value="${users.userName}" />
-							<img src="<%= contextPath%>/resources/images/Userinterface/edit.svg" 
-							class="image-delete" alt="..." width= 20 height = 20 >
+							
 							<button type="button" 
 								onclick="confirmDelete('${users.userName}')"><img src="<%= contextPath%>/resources/images/Userinterface/delete.png" 
 							class="image-delete" alt="..." width= 20 height = 20 ></button>
@@ -60,8 +70,12 @@ String contextPath = request.getContextPath();
             </tr>
         </c:forEach>
         </c:if>
+        
+       
     </table>
+    
     <div class = "addUser">
+   <h1> Add User </h1>
     <form action="<%=contextPath + Stringutils.SERVLET_URL_ADMIN_ADD%>" method="post" enctype ="multipart/form-data" >
 			<div class="row">
 				<div class="col">
@@ -121,7 +135,7 @@ String contextPath = request.getContextPath();
 				<div class = 'col'> 
 				<label for = "image"> Profile picture </label> <input type ="file" id ="image" name ="image">
  				</div>
-				<div class = 'col'><input type="submit" name="" value="Sign up"> </div>
+				<div class = 'col'><input type="submit" name="" value="Add User"> </div>
 				</div>
 				
 			</form>
@@ -155,6 +169,7 @@ String contextPath = request.getContextPath();
     
     
     </div>
+    <jsp:include page="<%=Stringutils.PAGE_URL_FOOTER%>" />
 </body>
 <script>
 	function confirmDelete(userName) {

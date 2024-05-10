@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import utils.Stringutils;
 
 @WebServlet(asyncSupported = true, urlPatterns = Stringutils.SERVLET_URL_LOGOUT)
-public class Logout extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

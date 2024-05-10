@@ -1,0 +1,48 @@
+@charset "ISO-8859-1";
+
+#footer {
+  background-color: #000080; 
+  color: #fff; 
+  padding: 20px;
+  text-align: center;
+}
+
+#footer p {
+  margin-bottom: 10px;
+}
+
+#footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#footer li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#footer a {
+  text-decoration: none;
+  color: inherit; 
+}
+
+#footer a:hover {
+  color: #fff; 
+}
+/* Style all font awesome icons */
+.fa {
+  padding: 20px;
+  font-size: 130px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius : 40%;
+}
+
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+

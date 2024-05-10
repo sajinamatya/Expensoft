@@ -19,6 +19,8 @@ String contextPath = request.getContextPath();
 	href="<%=contextPath%>/stylesheet/Header.css" />
 	<link rel="stylesheet" type="text/css"
 	href="<%=contextPath%>/stylesheet/userhome.css" />
+	<link rel="stylesheet" type="text/css"
+	href="<%=contextPath%>/stylesheet/footer.css" />
 <body>
 <jsp:include page="<%=Stringutils.PAGE_URL_HEADER%>" />
 <h1 style='Text-align:center;'>Hey <%=userSessions %>. Let's track your expense and income</h1>
@@ -75,6 +77,6 @@ String contextPath = request.getContextPath();
 	
 	
 </script>
-
+<jsp:include page="<%=Stringutils.PAGE_URL_FOOTER%>" />
 </body>
 </html>

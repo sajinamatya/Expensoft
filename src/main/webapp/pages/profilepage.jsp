@@ -26,8 +26,9 @@ String contextPath = request.getContextPath();
 </head>
 <body>
 <link rel="stylesheet" type="text/css" href="<%=contextPath%>/stylesheet/Header.css" />
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/stylesheet/footer.css" />
 <link rel="stylesheet" type="text/css" href="<%=contextPath%>/stylesheet/profile.css" />
-</body>
+
 <jsp:include page="<%=Stringutils.PAGE_URL_HEADER%>" />
 
 	<div class="profile-main">
@@ -98,5 +99,8 @@ String contextPath = request.getContextPath();
         function delete() {
            if  confirm('Are you sure you want to delete your account'){ document.getElementById("deleteuser").submit();}
         }
+        
     </script>
+    <jsp:include page="<%=Stringutils.PAGE_URL_FOOTER%>" />
+   </body>
 </html>

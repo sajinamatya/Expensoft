@@ -26,6 +26,7 @@ public class Stringutils {
 		public static final String QUERY_USER_CHECK = "SELECT * FROM user WHERE user_name = ?";
 		public static final String QUERY_USER_CHECKPASSWORD = "SELECT username,password FROM user WHERE user_name = ?";
 		public static final String QUERY_GET_ALL_USER = "SELECT * FROM user where user_name  != 'admin'";
+		public static final String QUERY_USER_BY_ID = "SELECT * FROM user where user_name= ?";
 		public static final String QUERY_GET_ALL_INCOME= "SELECT * FROM income WHERE user_id=? ";
 		public static final String QUERY_GET_ALL_EXPENSE= "SELECT * FROM expense WHERE user_id=? ";
 		public static final String QUERY_CHECK_EMAIL = " SELECT email FROM user WHERE email = ?";
@@ -107,11 +108,13 @@ public class Stringutils {
 		public static final String PAGE_URL_SIGNUP = "/pages/signup.jsp";
 		public static final String PAGE_URL_USER_HOME = "/pages/userhome.jsp";
 		public static final String PAGE_URL_HEADER = "/pages/header.jsp" ;
+		public static final String PAGE_URL_FOOTER = "/pages/footer.jsp" ;
 		public static final String PAGE_URL_ADMIN = "/pages/admindashboard.jsp" ;
 		public static final String PAGE_URL_ADMIN_HOME = "/pages/adminhome.jsp" ;
 		public static final String PAGE_URL_PROFILE = "/pages/profilepage.jsp" ;
 		public static final String PAGE_URL_INDEX =  "/index.jsp";
 		public static final String PAGE_URL_USERDASHBOARD =  "/pages/userhomedashboard.jsp";
+		public static final String PAGE_URL_USERUPDATE =  "/pages/updateuser.jsp";
 		// End: JSP Route
 
 		// Start: Servlet Route Path
@@ -126,6 +129,7 @@ public class Stringutils {
 		public static final String SERVLET_URL_INCOME = "/income";
 		public static final String SERVLET_URL_MODIFY_USER= "/modify";
 		public static final String SERVLET_URL_PROFILE = "/profile";
+		public static final String SERVLET_URL_UPDATE = "/update";
 		// End: Servlet Route Path
 
 		// Start: NormalText

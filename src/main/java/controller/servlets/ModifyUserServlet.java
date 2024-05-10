@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.database.DatabaseController;
-
+import model.UserModel;
 import utils.Stringutils;
 
 
@@ -44,7 +44,11 @@ public class ModifyUserServlet extends HttpServlet {
 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("put triggered");
+			UserModel usermodel = dbController.getAllUserInfoByUsername(req.getParameter(Stringutils.UPDATE_ID)) ;
+			
+			req.setAttribute("usermodel",usermodel );
+			req.getRequestDispatcher( Stringutils.PAGE_URL_USERUPDATE).forward(req, resp);
+			
 	}
 
 	@Override

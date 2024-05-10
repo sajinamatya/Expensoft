@@ -22,13 +22,13 @@ import utils.ValidationUtil;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 maxFileSize = 1024 * 1024 * 10, // 10MB
 maxRequestSize = 1024 * 1024 * 50)
-public class SignUp extends HttpServlet {
+public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final DatabaseController databaseController;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignUp() {
+    public SignUpServlet() {
     	// instantiate the object of DatabaseController 
     	this.databaseController = new DatabaseController();
         

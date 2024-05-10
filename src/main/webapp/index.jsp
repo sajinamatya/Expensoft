@@ -9,6 +9,7 @@
 <title></title>
 <link rel="stylesheet" type="text/css"
 	href="<%=contextPath%>/stylesheet/index.css" />
+	<link rel="stylesheet" type="text/css" href="<%=contextPath%>/stylesheet/footer.css" />
 </head>
 <body>
 <div class = "main">
@@ -33,5 +34,6 @@
 	
 	</div>
 </div>
+  <jsp:include page="<%=Stringutils.PAGE_URL_FOOTER%>" />
 </body>
 </html>

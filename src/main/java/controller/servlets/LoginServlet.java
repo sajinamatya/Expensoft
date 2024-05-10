@@ -23,12 +23,12 @@ import utils.Stringutils;
  */
 
 @WebServlet(urlPatterns = Stringutils.SERVLET_URL_LOGIN, asyncSupported = true)
-public class Login extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private final DatabaseController DatabaseController;
 
-    public Login() {
+    public LoginServlet() {
         this.DatabaseController = new DatabaseController();
     }
 
