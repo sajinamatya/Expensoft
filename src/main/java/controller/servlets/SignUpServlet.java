@@ -40,7 +40,7 @@ public class SignUpServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// Extract student information from request parameters
+		// Extract user information from request parameters
 		String fullName = request.getParameter(Stringutils.FULL_NAME);
 		String email = request.getParameter(Stringutils.EMAIL);
 		String username = request.getParameter(Stringutils.USERNAME);
@@ -57,8 +57,8 @@ public class SignUpServlet extends HttpServlet {
 		if(!ValidationUtil.isTextOnly(fullName) ||
 				!ValidationUtil.isAlphanumeric(username) ||
 				!ValidationUtil.isEmail(email) ||
-				!ValidationUtil.isNumbersOnly(phoneNumber) ||
-				!ValidationUtil.isGenderMatches(gender)) {
+				!ValidationUtil.isNumbersOnly(phoneNumber) 
+				) {
 			request.setAttribute(Stringutils.MESSAGE_ERROR, Stringutils.MESSAGE_ERROR_INCORRECT_DATA);
 			request.getRequestDispatcher(Stringutils.PAGE_URL_SIGNUP).forward(request, response);
 		}

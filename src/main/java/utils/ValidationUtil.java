@@ -69,26 +69,7 @@ public class ValidationUtil {
         return password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]*$"); // No length validation
     }
 
-    /**
-     * Validates if the provided text has the specified length.
-     * 
-     * @param text The text to be validated.
-     * @param length The expected length of the text.
-     * @return True if the text has the specified length, false otherwise.
-     */
-    public static boolean hasLength(String text, int length) {
-        return text.length() == length;
-    }
+
     
     
-    /**
-     * Checks if the provided gender matches "male" or "female" (ignoring case).
-     * 
-     * @param gender The gender to be validated.
-     * @return True if the gender matches "male" or "female", false otherwise.
-     */
-    public static boolean isGenderMatches(String gender) {
-        // Convert the gender to lowercase and compare with "male" and "female" ignoring case
-        return gender != null && (gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female"));
-    }
-}
+}  
