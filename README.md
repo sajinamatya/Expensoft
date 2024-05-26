@@ -12,5 +12,6 @@ Database : MYSQL database
 
 
 Class diagram
-![Uploading image.png…]()
+
+![image](https://github.com/sajinamatya/Expensoft/assets/66240249/d0e31c7a-6dca-49df-9f4b-85af87e71f05)
 
