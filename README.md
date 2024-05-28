@@ -21,6 +21,10 @@ Class diagram
 
 
 Database table 
+
+
+
+
 ![image](https://github.com/sajinamatya/Expensoft/assets/66240249/9792960b-4d5f-44cf-8878-5aa8eebff127)
 
 ERD diagram 
