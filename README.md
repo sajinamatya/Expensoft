@@ -33,4 +33,7 @@ Database table
 
 
 ERD diagram 
+
+
+
 ![image](https://github.com/sajinamatya/Expensoft/assets/66240249/4ce39772-ac77-4005-b398-c4599aace29a)
