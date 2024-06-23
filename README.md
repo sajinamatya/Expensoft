@@ -51,10 +51,16 @@ Web page Design
 3. User Home Page
    ![image](https://github.com/sajinamatya/Expensoft/assets/66240249/8ee0a166-1b07-4d2e-b649-dbba7652ea2c)
 
+
+
 4. Profile Page
+ 
    ![image](https://github.com/sajinamatya/Expensoft/assets/66240249/7b7e1ec3-db2d-4427-9f41-5480ce2abb6c)
 
+
+
 5. User Dashboard
+   
    ![image](https://github.com/sajinamatya/Expensoft/assets/66240249/2e165fd3-4dab-4473-931f-cf8bb4d5a3a6)
 
 
