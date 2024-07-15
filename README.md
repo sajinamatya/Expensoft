@@ -65,5 +65,9 @@ Web page Design
    ![image](https://github.com/sajinamatya/Expensoft/assets/66240249/2e165fd3-4dab-4473-931f-cf8bb4d5a3a6)
 
 
+6. Admin Dashboard
+   ![image](https://github.com/user-attachments/assets/143f8bca-da37-4c86-8310-62d723a368ab)
 
+7. Admin Home page
+   ![image](https://github.com/user-attachments/assets/cf728f73-2d0f-49b0-b988-1ce147b90aed)
 
