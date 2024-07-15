@@ -70,4 +70,6 @@ Web page Design
 
 7. Admin Home page
    ![image](https://github.com/user-attachments/assets/cf728f73-2d0f-49b0-b988-1ce147b90aed)
+8. Update user page
+   ![image](https://github.com/user-attachments/assets/a200e76c-f62c-4a7c-a641-3c0fe549be63)
 
