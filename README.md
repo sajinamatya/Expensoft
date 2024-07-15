@@ -10,6 +10,7 @@ backend : java servlet, apache 8.5 , tomcat server
 
 Database : MYSQL database 
 
+Design-pattern : Model-View-Controller 
 
 Role-based-login-system : Admin and normal user 
 
