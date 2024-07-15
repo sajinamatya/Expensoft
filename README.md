@@ -55,8 +55,8 @@ Web page Design
 
 
 4. Profile Page
- 
-   ![image](https://github.com/sajinamatya/Expensoft/assets/66240249/7b7e1ec3-db2d-4427-9f41-5480ce2abb6c)
+ ![image](https://github.com/user-attachments/assets/a1ab531c-3f79-4731-9fcd-e60dace0489d)
+
 
 
 
